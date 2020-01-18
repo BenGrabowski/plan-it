@@ -1,5 +1,6 @@
 {
     "version": 2,
+    "alias": "plan-it",
     "name": "plan-it",
     "routes": [
         { "handle": "filesystem" },

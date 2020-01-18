@@ -1,0 +1,51 @@
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-heading {
+    font-size: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.tagline {
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin: 30px;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-container {
+    border: 3px solid black;
+    max-width: 550px;
+    padding: 30px 30px;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.info-content {
+    max-width: 400px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+@media screen and (max-width: 450px) {
+    .info {
+        max-width: 300px;
+    }
+}

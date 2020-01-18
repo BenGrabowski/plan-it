@@ -1,0 +1,51 @@
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* background: rgb(247, 249, 246); */
+}
+
+.app-name {
+    margin-right: auto;
+    margin-left: 10px;
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+}
+
+.nav-links > a {
+    /* color: white; */
+    color: black;
+    text-decoration: none;
+    margin: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+@media screen and (max-width: 450px) {
+    .nav-bar {
+        flex-direction: column;
+        margin-top: 100px;
+    }
+
+    .app-name {
+        margin: 0 auto;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        margin-top: 30px;
+    }
+}

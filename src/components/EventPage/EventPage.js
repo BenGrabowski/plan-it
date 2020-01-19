@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import STORE from '../../STORE';
 import './EventPage.css';
 
@@ -32,7 +33,7 @@ class EventPage extends Component {
 
                 <div className="budget-guest">
                     <section className="budget">
-                        <p>Budget: ${event.budget.total}</p>
+                        <p className="total-budget">Budget: ${event.budget.total}</p>
                         <p>Remaining Budget: ${remainingBudget}</p>
                         <p>Venue: ${event.budget.venue}</p>
                         <p>Food: ${event.budget.food}</p>
@@ -42,13 +43,14 @@ class EventPage extends Component {
                     </section>
 
                     <section className="guest">
-                        <p>Maximum # of Guests: {event.guests.max}</p>
+                        <p className="guest-max">Maximum # of Guests: {event.guests.max}</p>
                         <p>Spots Remaining: {spotsRemaining}</p>
                         <ul>
                             {guests}
                         </ul>
                     </section>
                 </div>
+                <Link to='/events' className="back">Back</Link>
             </div>
         );
     }

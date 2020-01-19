@@ -35,6 +35,7 @@
     .nav-bar {
         flex-direction: column;
         margin-top: 100px;
+        border-bottom: 2px solid black;
     }
 
     .app-name {

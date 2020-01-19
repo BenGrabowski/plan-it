@@ -3,20 +3,27 @@
     flex-direction: column;
     align-items: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 25px;
 }
 
 .budget {
     border: 2px solid black;
     padding: 20px;
     background: rgb(133, 201, 162);
-    /* min-width: 250px; */
+    margin: 20px;
+    width: 260px;
+    height: 400px;
+    font-size: 18px;
 }
 
 .guest {
     border: 2px solid black;
     padding: 20px;
     background: rgb(133, 201, 162);
-    /* min-width: 250px; */
+    margin: 20px;
+    width: 260px;
+    height: 400px;
+    font-size: 18px;
 }
 
 .event-name {
@@ -25,25 +32,43 @@
 
 .address {
     line-height: .65;
-    /* margin-top: 30px; */
+    background: rgba(255, 255, 255, .9);
+    padding: 10px;
+    border: 1px solid black;
 }
 
 .date-time {
     line-height: .65;
+    background: rgba(255, 255, 255, .9);
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 20px;
 }
 
 .event-info {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 18px;
 }
 
 .budget-guest {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     width: 60%;
     margin-top: 30px;
+}
+
+.total-budget {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.guest-max {
+    font-size: 22px;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 800px) {

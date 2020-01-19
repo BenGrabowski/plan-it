@@ -4,10 +4,8 @@
     align-items: center;
     justify-content: flex-end;
     height: 100px;
-    position: fixed;
-    top: 0;
+    /* position: fixed; */
     width: 100%;
-    /* background: rgb(247, 249, 246); */
 }
 
 .app-name {
@@ -27,7 +25,6 @@
 }
 
 .nav-links > a {
-    /* color: white; */
     color: black;
     text-decoration: none;
     margin: 10px;

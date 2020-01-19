@@ -25,7 +25,7 @@ class Event extends Component {
     
     render() {
         return (
-            <section className="event-info">
+            <section>
                 <Link to={`/events/${this.props.id}`} className="event-name-link">{this.props.name}</Link>
                 <p className="event-date">{this.props.date}</p>
                 <p className="event-time">{this.renderTime()}</p>

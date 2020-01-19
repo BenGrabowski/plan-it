@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Event from '../Event/Event';
 import STORE from '../../STORE';
 import './MyEvents.css';
@@ -18,10 +19,16 @@ class MyEvents extends Component {
         
         return (
             <div className="my-events">
-                <h2>My Events</h2>
+                <h2 className="my-events-header">My Events</h2>
                 <div class="event-container">
                     {events}
                 </div>
+                <Link 
+                    to='/new-event'
+                    className="new-event-button"
+                >
+                    New Event
+                </Link>
             </div>
         );
     }

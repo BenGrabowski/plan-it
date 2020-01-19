@@ -6,6 +6,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import MyEvents from '../MyEvents/MyEvents';
 import EventPage from '../EventPage/EventPage';
+import NewEvent from '../NewEvent/NewEvent';
 import './App.css';
 
 class App extends Component {
@@ -35,6 +36,10 @@ class App extends Component {
           <Route
             path='/events/:id'
             component={EventPage}
+          />
+          <Route
+            path='/new-event'
+            component={NewEvent}
           />
         </main>
       </div>  

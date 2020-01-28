@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './UserForm.css';
 
 class UserForm extends Component {
-    render() {
+    render() {        
         return (
             <div className="user-inputs">
                 <div className="username">
@@ -15,7 +15,7 @@ class UserForm extends Component {
                     <input type="password" name='password'/>
                 </div>
             </div>
-        )
+        );
     }
 }
 

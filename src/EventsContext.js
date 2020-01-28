@@ -5,10 +5,13 @@ const EventsContext = React.createContext({
     events: [],
     error: null,
     loggedIn: false,
+    selectedEvent: undefined,
+    isFetching: false,
     setError: () => {},
     clearError: () => {},
     setLoggedIn: () => {},
-    setLoggedOut: () => {}
+    setLoggedOut: () => {},
+    setSelectedEvent: () => {},
 });
 
 export default EventsContext;
@@ -16,11 +19,28 @@ export default EventsContext;
 export class EventsProvider extends Component {
     state = {
         events: [],
+        selectedEvent: undefined,
         error: null,
+        loggedIn: false,
+        isFetching: false,
     }
 
     setUserId = id => {
         TokenService.saveUserId(id)
+    }
+
+    setEvents = events => {
+        (Array.isArray(events))
+        ? this.setState({ events })
+        : console.log('events is not an array');
+    }
+
+    setSelectedEvent = event => {
+        this.setState({ selectedEvent: event });
+    }
+
+    clearSelectedEvent = () => {
+        this.setState({ selectedEvent: undefined });
     }
 
     setLoggedIn = () => {
@@ -29,6 +49,12 @@ export class EventsProvider extends Component {
 
     setLoggedOut = () => {
         this.setState({ loggedIn: false });
+    }
+
+    setFetching = status => {
+        this.setState({
+            isFetching: status
+        })
     }
 
     setError = error => {
@@ -43,11 +69,17 @@ export class EventsProvider extends Component {
     render() {
         const contextValue = {
             events: this.state.events,
-            setSelectedPlace: this.setSelectedPlace,
+            selectedEvent: this.state.selectedEvent,
+            setSelectedEvent: this.setSelectedEvent,
+            clearSelectedEvent: this.clearSelectedEvent,
             clearError: this.clearError,
             setUserId: this.setUserId,
             setLoggedIn: this.setLoggedIn,
             setLoggedOut: this.setLoggedOut,
+            setEvents: this.setEvents,
+            loggedIn: this.state.loggedIn,
+            isFetching: this.state.isFetching,
+            setFetching: this.setFetching,
         }
 
         return (

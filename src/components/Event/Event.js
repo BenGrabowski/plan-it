@@ -2,31 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Event.css';
 import EventsContext from '../../EventsContext';
+import moment from 'moment';
 
 class Event extends Component {
     renderStart() {
-        const start = this.props.start
-        return (start) ? start: undefined;
+        const start = this.props.start ? moment(this.props.start, 'hh:mm:ss').format('h:mm A') : null;
+        return start;
     }
 
     renderEnd() {
-        const end = this.props.end
-        return (end) ? end : undefined;
+        const end = this.props.end ? moment(this.props.end, 'hh:mm:ss').format('h:mm A'): null;
+        return end;
     }
 
     static contextType = EventsContext;
-
-    // renderVenue() {
-    //     const venue = this.props.venue;
-    //     return (venue)
-    //     ? <div className="venue">
-    //         <p className="event-venue">{venue.name}</p>
-    //         { venue.address_street !== '' ? <p className="venue-street">{venue.address_street}</p> : null }
-    //         { venue.address_city !=='' && venue.address_state !== '' ? <p className="venue-city-state-zip">{venue.address_city}, {venue.address_state} 
-    //         {venue.address_zip}</p> : null }
-    //     </div>
-    //     : undefined;
-    // }
     
     render() {
         return (
@@ -37,10 +26,9 @@ class Event extends Component {
                 >
                     {this.props.name}
                 </Link>
-                <p className="event-date">{this.props.date}</p>
+                <p className="event-date">{moment(this.props.date, moment.ISO_8601).format('MM-DD-YYYY')}</p>
                 <p className="event-start">{this.renderStart()}</p>
                 <p className="event-end">{this.renderEnd()}</p>
-                {/* {this.renderVenue()} */}
             </section>
         );
     }

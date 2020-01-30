@@ -42,6 +42,16 @@ class VenueForm extends Component {
        });
    }
 
+   //Only display the form controls 'done' and 'cancel' when editing an existing event
+   renderButtons = () => {
+    return this.props.newEvent 
+    ? null 
+    : <div>
+        <button onClick={event => this.submitVenue(event)}>Done</button>
+        <button onClick={() => this.props.hideVenue()}>Cancel</button>
+    </div>
+}
+
    submitVenue = event => {
         event.preventDefault();   
         const venue = this.state;
@@ -103,8 +113,9 @@ class VenueForm extends Component {
                         value={this.props.displayVenueForm ? this.context.selectedEvent.venue.address_zip : undefined} 
                     />
                 </div>
-                <button onClick={event => this.submitVenue(event)}>Done</button>
-                <button onClick={() => this.props.hideVenue()}>Cancel</button>
+                {/* <button onClick={event => this.submitVenue(event)}>Done</button>
+                <button onClick={() => this.props.hideVenue()}>Cancel</button> */}
+                {this.renderButtons()}
             </div>
         );
     }

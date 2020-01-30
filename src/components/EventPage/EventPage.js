@@ -10,6 +10,8 @@ import TokenService from '../../services/token-service';
 import EventInfoForm from '../EventInfoForm/EventInfoForm';
 import VenueForm from '../VenueForm/VenueForm';
 import Venue from '../Venue/Venue';
+import DeleteButton from '../DeleteButton/DeleteButton';
+import BudgetForm from '../BudgetForm/BudgetForm';
 
 class EventPage extends Component {
     static contextType = EventsContext;
@@ -17,6 +19,8 @@ class EventPage extends Component {
     state = {
         displayEventInfoForm: false,
         displayVenueForm: false,
+        displayBudgetForm: false,
+        displayGuestForm: false,
     }
 
     componentDidMount() {
@@ -35,13 +39,26 @@ class EventPage extends Component {
     }
 
     renderBudget = () => {
-        console.log(this.context.selectedEvent.budget.total)
-        return (this.context.selectedEvent.budget.total ?  <Budget /> : null);
+        return (
+            this.context.selectedEvent.budget.total 
+            ?  <Budget 
+                    displayBudgetForm={this.displayBudgetForm} 
+                    hideBudget={this.hideBudget}
+                /> 
+            : null
+        );
     }
 
     renderGuests = () => {
-        console.log(this.context.selectedEvent.guests.max)
-        return (this.context.selectedEvent.guests.max ? <Guests /> : null);
+        return (
+            this.context.selectedEvent.guests.max 
+            ? <Guests 
+                displayGuestForm={this.state.displayGuestForm}
+                setDisplayGuest={this.displayGuestForm}
+                hideGuest={this.hideGuest}
+            /> 
+            : null
+        );
     }
 
     displayEventInfoForm = () => {
@@ -59,6 +76,22 @@ class EventPage extends Component {
     hideVenue = () => {
         this.setState({ displayVenueForm: false });
     }
+
+    displayBudgetForm = () => {
+        this.setState({ displayBudgetForm: true });
+    }
+
+    hideBudget = () => {
+        this.setState({ displayBudgetForm: false });
+    }
+
+    displayGuestForm = () => {
+        this.setState({ displayGuestForm: true });
+    }
+
+    hideGuest = () => {
+        this.setState({ displayGuestForm: false });
+    }
     
     render() {
         return (
@@ -71,10 +104,12 @@ class EventPage extends Component {
                     } else {
                         return (
                             <div className="event-page">
+                                
                                 { this.state.displayEventInfoForm 
                                 ? <EventInfoForm 
                                     displayEventInfoForm={this.state.displayEventInfoForm} 
                                     hideEventInfo={this.hideEventInfo}
+                                    eventId={this.props.match.params.id}
                                 />
                                 : <Event 
                                     name={context.selectedEvent.event_name}
@@ -83,6 +118,7 @@ class EventPage extends Component {
                                     end={context.selectedEvent.event_end}
                                     // venue={context.selectedEvent.venue}
                                 />}
+
                                 { this.state.displayVenueForm 
                                     ? <VenueForm 
                                         hideVenue={this.hideVenue}
@@ -93,9 +129,17 @@ class EventPage extends Component {
                                 <button onClick={this.displayVenueForm}>Edit Venue</button>
     
                                 <div className="budget-guest">
-                                    {this.renderBudget()}
+                                    {this.state.displayBudgetForm 
+                                        ? <BudgetForm 
+                                            hideBudget={this.hideBudget} 
+                                            displayBudgetForm={this.state.displayBudgetForm}
+                                            currentBudget={this.state.currentBudgetTotal}
+                                        /> 
+                                        : this.renderBudget()
+                                    }
                                     {this.renderGuests()}
                                 </div>
+                                <DeleteButton id={context.selectedEvent.id} />
                                 <Link to='/events' className="back">Back</Link>
                             </div>
                         );    

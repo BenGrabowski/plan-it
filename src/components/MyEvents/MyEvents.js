@@ -5,6 +5,7 @@ import './MyEvents.css';
 import EventsContext from '../../EventsContext';
 import TokenService from '../../services/token-service';
 import EventsApiService from '../../services/events-api-service';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 class MyEvents extends Component {
     static contextType = EventsContext;
@@ -34,6 +35,7 @@ class MyEvents extends Component {
                             name={event.event_name} 
                             date={event.event_date}
                         />
+                        <DeleteButton id={event.id} history={this.props.history} />
                 </div>
         });
         

@@ -2,26 +2,42 @@ import React, { Component } from 'react';
 import EventsContext from '../../EventsContext';
 import EventApiService from '../../services/events-api-service';
 import TokenService from '../../services/token-service';
+import moment from 'moment';
 
 class EventInfoForm extends Component {
     static contextType = EventsContext;
     
     state = {
         event_name: this.context.selectedEvent.event_name,
-        event_date: this.context.selectedEvent.event_date,
-        event_start: this.context.selectedEvent.event_start,
+        event_date: moment(this.context.selectedEvent.event_date, moment.ISO_8601).format('YYYY-MM-DD'),
+        event_start: moment(this.context.selectedEvent.event_start, 'hh:mm:ss').format('h:mm A'),
         event_end: this.context.selectedEvent.event_end
     };
     
     
-    submitEventInfo = event => {
-        event.preventDefault();   
+    submitEventInfo = () => {
+        const user_id = TokenService.getUserId();
         const eventInfo = this.state;
         EventApiService.patchEvent(
-            TokenService.getUserId,
+            user_id,
             this.context.selectedEvent.id,
             eventInfo
-        );
+        )
+            .then(() => {
+                EventApiService.getEvents(user_id)
+                    .then(events => {
+                        this.props.hideEventInfo();
+                        this.context.setEvents(events);
+                    })
+                    .then(() => {
+                        EventApiService.getEvent(
+                            this.props.eventId,
+                            user_id
+                        )
+                            .then(event => this.context.setSelectedEvent(event))
+                            .catch(this.context.setError);            
+                    })
+            })
     }
 
     updateEventName = event => {

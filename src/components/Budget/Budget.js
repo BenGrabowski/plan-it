@@ -17,6 +17,7 @@ class Budget extends Component {
                 <p>Drinks: ${this.context.selectedEvent.budget.drinks}</p>
                 <p>Decorations: ${this.context.selectedEvent.budget.decorations}</p>
                 <p>Other: ${this.context.selectedEvent.budget.other}</p>
+                <button onClick={() => this.props.displayBudgetForm()}>Edit</button>
             </section>
         );
     }

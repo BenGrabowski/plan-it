@@ -54,7 +54,7 @@ const EventApiService = {
         );
     },
     patchEvent(user_id, eventId, newEvent) {
-        return fetch(`${config.API_ENDPOINT}`, {
+        return fetch(`${config.API_ENDPOINT}/events/${eventId}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -66,7 +66,7 @@ const EventApiService = {
         .catch(error => console.log(error));
     },
     deleteEvent(user_id, eventId) {
-        return fetch(`${config.API_ENDPOINT}`, {
+        return fetch(`${config.API_ENDPOINT}/events/${eventId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

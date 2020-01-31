@@ -10,7 +10,7 @@ class EventInfoForm extends Component {
     state = {
         event_name: this.context.selectedEvent.event_name,
         event_date: moment(this.context.selectedEvent.event_date, moment.ISO_8601).format('YYYY-MM-DD'),
-        event_start: moment(this.context.selectedEvent.event_start, 'hh:mm:ss').format('h:mm A'),
+        event_start: this.context.selectedEvent.event_start,
         event_end: this.context.selectedEvent.event_end
     };
     
@@ -18,6 +18,9 @@ class EventInfoForm extends Component {
     submitEventInfo = () => {
         const user_id = TokenService.getUserId();
         const eventInfo = this.state;
+        
+        console.log(eventInfo)
+        
         EventApiService.patchEvent(
             user_id,
             this.context.selectedEvent.id,
@@ -37,7 +40,7 @@ class EventInfoForm extends Component {
                             .then(event => this.context.setSelectedEvent(event))
                             .catch(this.context.setError);            
                     })
-            })
+            });
     }
 
     updateEventName = event => {

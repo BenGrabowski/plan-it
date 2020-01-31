@@ -7,13 +7,26 @@ class BudgetForm extends Component {
     static contextType = EventsContext;
     
     state = {
-        total: undefined,
-        venue: undefined,
-        food: undefined,
-        drinks: undefined,
-        decorations: undefined,
-        other: undefined,
-        currentTotal: this.context.selectedEvent.budget.total,
+        total: '',
+        venue: '',
+        food: '',
+        drinks: '',
+        decorations: '',
+        other: '',
+        displayBudget: false
+    }
+
+    componentDidMount() {
+        if (this.props.params) {            
+            this.setState({
+                total: this.context.selectedEvent.budget.total,
+                venue: this.context.selectedEvent.budget.venue,
+                food: this.context.selectedEvent.budget.food,
+                drinks: this.context.selectedEvent.budget.drinks,
+                decorations: this.context.selectedEvent.budget.decorations,
+                other: this.context.selectedEvent.budget.other,    
+            })
+        }
     }
 
     updateTotal = event => {
@@ -52,50 +65,65 @@ class BudgetForm extends Component {
         });
     }
 
-    renderButtons = () => {
-        return this.props.newEvent 
-        ? null 
-        : <div>
-            <button onClick={event => this.submitBudget(event)}>Done</button>
-            <button onClick={() => this.props.hideBudget()}>Cancel</button>
-        </div>
+    displayBudget = () => {
+        this.setState({ displayBudget: true });
     }
 
     submitBudget = () => {
         const user_id = TokenService.getUserId();
+                
+        const updatedBudget = {
+            total: this.state.total,
+            venue: this.state.venue,
+            food: this.state.food,
+            drinks: this.state.drinks,
+            decorations: this.state.decorations,
+            other: this.state.other
+        }
         
-        let newBudgetFields = this.context.selectedEvent;
-        newBudgetFields.budget = this.state; 
+        if (!this.props.newEvent) {
+            let newBudgetFields = this.context.selectedEvent;            
+            newBudgetFields.budget = updatedBudget; 
 
-        EventApiService.patchEvent(
-            user_id,
-            this.context.selectedEvent.id,
-            newBudgetFields
-        )
-            .then(() => {
-                EventApiService.getEvents(user_id)
-                    .then(events => {
-                        this.props.hideBudget();
-                        this.context.setEvents(events);
-                    })
-                    .then(() => {
-                        EventApiService.getEvent(
-                            this.props.eventId,
-                            user_id
-                        )
-                            .then(event => this.context.setSelectedEvent(event))
-                            .catch(this.context.setError);            
-                    })
-            })
+            EventApiService.patchEvent(
+                user_id,
+                this.context.selectedEvent.id,
+                newBudgetFields
+            )
+                .then(() => {
+                    EventApiService.getEvents(user_id)
+                        .then(events => {
+                            this.props.hideBudget();
+                            this.context.setEvents(events);
+                        })
+                        .then(() => {
+                            EventApiService.getEvent(
+                                this.props.eventId,
+                                user_id
+                            )
+                                .then(event => this.context.setSelectedEvent(event))
+                        })
+                })
+                .catch(err => this.context.setError(err))    
+        }
+
+        this.props.updateBudget(updatedBudget);
+        this.displayBudget();
     }
 
-
-
-    render() {
-        // const currentBudgetTotal = this.props.newEvent ? null : this.context.selectedEvent.budget.total;
-        
+    render() {        
         return (
+            this.state.displayBudget
+            ? 
             <div>
+                <p>Total: {this.state.total}</p>
+                <p>Venue: {this.state.venue}</p>
+                <p>Food: {this.state.food}</p>
+                <p>Drinks: {this.state.drinks}</p>
+                <p>Decorations: {this.state.decorations}</p>
+                <p>Other: {this.state.other}</p>
+            </div>
+            : <div>
                 <h3>Budget</h3>
                 <div>
                     <label htmlFor="budget-total">Total: </label>
@@ -103,7 +131,7 @@ class BudgetForm extends Component {
                         type="number" 
                         name="budget-total" 
                         onChange={event => this.updateTotal(event)}
-                        value={this.props.displayBudgetForm ? this.props.currentBudget.total : undefined} 
+                        defaultValue={this.state.total} 
                     />
                 </div>
 
@@ -113,7 +141,7 @@ class BudgetForm extends Component {
                         type="number" 
                         name="budget-venue" 
                         onChange={event => this.updateVenue(event)} 
-                        value={this.props.displayBudgetForm ? this.context.selectedEvent.budget.venue : undefined} 
+                        defaultValue={this.state.venue} 
                     />
                 </div>
 
@@ -123,7 +151,7 @@ class BudgetForm extends Component {
                         type="number" 
                         name="budget-food" 
                         onChange={event => this.updateFood(event)} 
-                        value={this.props.displayBudgetForm ? this.context.selectedEvent.budget.food : undefined} 
+                        defaultValue={this.state.food} 
                     />
                 </div>
 
@@ -133,7 +161,7 @@ class BudgetForm extends Component {
                         type="number" 
                         name="budget-drinks" 
                         onChange={event => this.updateDrinks(event)} 
-                        value={this.props.displayBudgetForm ? this.context.selectedEvent.budget.drinks : undefined} 
+                        defaultValue={this.state.drinks} 
                     />
                 </div>
 
@@ -143,7 +171,7 @@ class BudgetForm extends Component {
                         type="number" 
                         name="budget-decorations" 
                         onChange={event => this.updateDecorations(event)} 
-                        value={this.props.displayBudgetForm ? this.context.selectedEvent.budget.decorations : undefined} 
+                        defaultValue={this.state.decorations} 
                     />
                 </div>
 
@@ -153,10 +181,11 @@ class BudgetForm extends Component {
                         type="number" 
                         name="budget-other" 
                         onChange={event => this.updateOther(event)} 
-                        value={this.props.displayBudgetForm ? this.context.selectedEvent.budget.other : undefined} 
+                        defaultValue={this.state.other} 
                     />
                 </div>
-                {this.renderButtons()}
+                <button onClick={event => this.submitBudget(event)}>Done</button>
+                <button onClick={() => this.props.hideBudget()}>Cancel</button>
             </div>
         );
     }

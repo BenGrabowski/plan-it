@@ -154,11 +154,31 @@ class NewEvent extends Component {
             
                 <div className="add-buttons">
                     { this.state.displayVenue ? null : <button onClick={this.setDisplayVenue}>Add Venue</button> }
-                    { this.state.displayVenue ? <VenueForm updateVenue={this.updateVenue} hideVenue={this.hideVenue} newEvent={true} /> : null }
+                    { this.state.displayVenue 
+                        ? <VenueForm 
+                            updateVenue={this.updateVenue} 
+                            hideVenue={this.hideVenue} 
+                            newEvent={true} /> 
+                        : null 
+                    }
+
                     { this.state.displayBudget ? null : <button onClick={this.setDisplayBudget}>Add Budget</button> }
-                    { this.state.displayBudget ? <BudgetForm updateBudget={this.updateBudget} hideBudget={this.hideBudget} newEvent={true} /> : null }
+                    { this.state.displayBudget 
+                        ? <BudgetForm 
+                            updateBudget={this.updateBudget} 
+                            hideBudget={this.hideBudget} 
+                            newEvent={true} /> 
+                        : null 
+                    }
+                    
                     { this.state.displayGuests ? null : <button onClick={this.setDisplayGuests}>Add Guest Count</button> }
-                    { this.state.displayGuests ? <GuestsForm updateGuests={this.updateGuests} hideGuests={this.hideGuests} newEvent={true} /> : null }
+                    { this.state.displayGuests 
+                        ? <GuestsForm 
+                            updateGuests={this.updateGuests} 
+                            hideGuests={this.hideGuests} 
+                            newEvent={true} /> 
+                        : null 
+                    }
                 </div>
 
                 <button type="submit">Submit</button>

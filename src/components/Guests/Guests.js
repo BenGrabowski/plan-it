@@ -8,6 +8,18 @@ import EventApiService from '../../services/events-api-service';
 class Guests extends Component {
     static contextType = EventsContext;
 
+    state = {
+        addingGuest: false
+    };
+
+    setAddingGuest = () => {
+        this.setState({ addingGuest: true });
+    }
+
+    hideAddingGuest = () => {
+        this.setState({ addingGuest: false });
+    }
+
     handleDeleteGuest = index => {
         const user_id = TokenService.getUserId();
         let currentList = this.context.selectedEvent.guests.list;
@@ -64,8 +76,9 @@ class Guests extends Component {
                 <ul>
                     {guests}
                 </ul>
-                { this.props.displayGuestForm ? <AddGuests hideGuest={() => this.props.hideGuest()} /> : null }
-                { this.props.displayGuestForm ? null : <button onClick={this.props.setDisplayGuest}>Add Guest</button> }
+                { this.state.addingGuest ? <AddGuests hideGuest={this.hideAddingGuest} /> : null }
+                {/* { this.props.displayGuestForm ? null : <button onClick={this.props.setAddingGuest}>Add Guest</button> } */}
+                <button onClick={this.setAddingGuest}>Add Guest</button>
             </section>
         );
     }

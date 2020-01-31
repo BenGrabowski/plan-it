@@ -12,6 +12,7 @@ import VenueForm from '../VenueForm/VenueForm';
 import Venue from '../Venue/Venue';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import BudgetForm from '../BudgetForm/BudgetForm';
+import GuestsForm from '../GuestsForm/GuestsForm';
 
 class EventPage extends Component {
     static contextType = EventsContext;
@@ -21,6 +22,9 @@ class EventPage extends Component {
         displayVenueForm: false,
         displayBudgetForm: false,
         displayGuestForm: false,
+        venue: {},
+        budget: {},
+        guests: {}
     }
 
     componentDidMount() {
@@ -45,7 +49,7 @@ class EventPage extends Component {
                     displayBudgetForm={this.displayBudgetForm} 
                     hideBudget={this.hideBudget}
                 /> 
-            : null
+            : <button onClick={this.displayBudgetForm}>Add Budget</button>
         );
     }
 
@@ -57,7 +61,7 @@ class EventPage extends Component {
                 setDisplayGuest={this.displayGuestForm}
                 hideGuest={this.hideGuest}
             /> 
-            : null
+            : <button onClick={this.displayGuestForm}>Add Guests</button>
         );
     }
 
@@ -69,6 +73,10 @@ class EventPage extends Component {
         this.setState({ displayEventInfoForm: false });
     }
 
+    updateVenue = venue => {
+        this.setState({ venue });
+    }
+
     displayVenueForm = () => {
         this.setState({ displayVenueForm: true });
     }
@@ -77,12 +85,20 @@ class EventPage extends Component {
         this.setState({ displayVenueForm: false });
     }
 
+    updateBudget = budget => {
+        this.setState({ budget })
+    }
+    
     displayBudgetForm = () => {
         this.setState({ displayBudgetForm: true });
     }
 
     hideBudget = () => {
         this.setState({ displayBudgetForm: false });
+    }
+
+    updateGuests = guests => {
+        this.setState({ guests: guests })
     }
 
     displayGuestForm = () => {
@@ -116,30 +132,44 @@ class EventPage extends Component {
                                     date={context.selectedEvent.event_date}
                                     start={context.selectedEvent.event_start}
                                     end={context.selectedEvent.event_end}
-                                    // venue={context.selectedEvent.venue}
                                 />}
+                                <button onClick={this.displayEventInfoForm}>Edit Event</button>
+
 
                                 { this.state.displayVenueForm 
                                     ? <VenueForm 
                                         hideVenue={this.hideVenue}
                                         displayVenueForm={this.state.displayVenueForm}
+                                        updateVenue={this.updateVenue}
                                     /> 
                                     : <Venue /> }
-                                <button onClick={this.displayEventInfoForm}>Edit Event</button>
-                                <button onClick={this.displayVenueForm}>Edit Venue</button>
+                                
+                                {this.state.displayVenueForm ? null : <button onClick={this.displayVenueForm}>Edit Venue</button>}
+                                
     
                                 <div className="budget-guest">
                                     {this.state.displayBudgetForm 
                                         ? <BudgetForm 
                                             hideBudget={this.hideBudget} 
                                             displayBudgetForm={this.state.displayBudgetForm}
-                                            currentBudget={this.state.currentBudgetTotal}
+                                            editEvent={true}
+                                            params={this.props.match.params}
+                                            updateBudget={this.updateBudget}
+                                            eventId={this.props.match.params.id}
                                         /> 
                                         : this.renderBudget()
                                     }
-                                    {this.renderGuests()}
+
+                                    {this.state.displayGuestForm
+                                        ? <GuestsForm 
+                                            hideGuest={this.hideGuest}
+                                            updateGuests={this.updateGuests}
+                                            params={this.props.match.params}
+                                            eventId={this.props.match.params.id}
+                                        />
+                                        : this.renderGuests()}
                                 </div>
-                                <DeleteButton id={context.selectedEvent.id} />
+                                <DeleteButton id={context.selectedEvent.id} history={this.props.history} />
                                 <Link to='/events' className="back">Back</Link>
                             </div>
                         );    

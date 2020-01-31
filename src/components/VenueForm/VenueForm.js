@@ -9,7 +9,8 @@ class VenueForm extends Component {
         address_street: '',
         address_city: '',
         address_state: '',
-        address_zip: ''
+        address_zip: '',
+        displayVenue: false
     }
 
    updateName = event => {
@@ -42,24 +43,35 @@ class VenueForm extends Component {
        });
    }
 
-   //Only display the form controls 'done' and 'cancel' when editing an existing event
-   renderButtons = () => {
-    return this.props.newEvent 
-    ? null 
-    : <div>
-        <button onClick={event => this.submitVenue(event)}>Done</button>
-        <button onClick={() => this.props.hideVenue()}>Cancel</button>
-    </div>
-}
+   displayVenue = () => {
+        this.setState({ displayVenue: true })   
+   }
 
    submitVenue = event => {
         event.preventDefault();   
-        const venue = this.state;
+        const venue = {
+            name: this.state.name,
+            address_street: this.state.address_street,
+            address_city: this.state.address_city,
+            address_state: this.state.address_state,
+            address_zip: this.state.address_zip,    
+        }
         this.props.updateVenue(venue);
+        this.displayVenue();
    }
     
     render() {
         return (
+            this.state.displayVenue
+            ? 
+            <div>
+                <p>{this.state.name}</p>
+                <p>{this.state.address_street}</p>
+                <p>{this.state.address_city}</p>
+                <p>{this.state.address_state}</p>
+                <p>{this.state.address_zip}</p>
+            </div>
+            :
             <div>
                 <h3>Venue</h3>
                 <div>
@@ -113,9 +125,8 @@ class VenueForm extends Component {
                         value={this.props.displayVenueForm ? this.context.selectedEvent.venue.address_zip : undefined} 
                     />
                 </div>
-                {/* <button onClick={event => this.submitVenue(event)}>Done</button>
-                <button onClick={() => this.props.hideVenue()}>Cancel</button> */}
-                {this.renderButtons()}
+                <button onClick={event => this.submitVenue(event)}>Done</button>
+                <button onClick={() => this.props.hideVenue()}>Cancel</button>
             </div>
         );
     }

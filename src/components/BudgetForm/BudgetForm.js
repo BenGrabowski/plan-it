@@ -69,6 +69,10 @@ class BudgetForm extends Component {
         this.setState({ displayBudget: true });
     }
 
+    displayForm = () => {
+        this.setState({ displayBudget: false });
+    }
+
     submitBudget = () => {
         const user_id = TokenService.getUserId();
                 
@@ -122,6 +126,7 @@ class BudgetForm extends Component {
                 <p>Drinks: {this.state.drinks}</p>
                 <p>Decorations: {this.state.decorations}</p>
                 <p>Other: {this.state.other}</p>
+                <button onClick={this.displayForm}>Edit</button>
             </div>
             : <div>
                 <h3>Budget</h3>

@@ -57,7 +57,7 @@ class EventPage extends Component {
         return (
             this.context.selectedEvent.guests.max 
             ? <Guests 
-                displayGuestForm={this.state.displayGuestForm}
+                displayGuestForm={this.displayGuestForm}
                 setDisplayGuest={this.displayGuestForm}
                 hideGuest={this.hideGuest}
             /> 
@@ -105,7 +105,7 @@ class EventPage extends Component {
         this.setState({ displayGuestForm: true });
     }
 
-    hideGuest = () => {
+    hideGuests = () => {
         this.setState({ displayGuestForm: false });
     }
     
@@ -126,6 +126,7 @@ class EventPage extends Component {
                                     displayEventInfoForm={this.state.displayEventInfoForm} 
                                     hideEventInfo={this.hideEventInfo}
                                     eventId={this.props.match.params.id}
+                                    params={this.props.match.params}
                                 />
                                 : <Event 
                                     name={context.selectedEvent.event_name}
@@ -141,6 +142,8 @@ class EventPage extends Component {
                                         hideVenue={this.hideVenue}
                                         displayVenueForm={this.state.displayVenueForm}
                                         updateVenue={this.updateVenue}
+                                        params={this.props.match.params}
+                                        eventId={this.props.match.params.id}
                                     /> 
                                     : <Venue /> }
                                 
@@ -162,7 +165,7 @@ class EventPage extends Component {
 
                                     {this.state.displayGuestForm
                                         ? <GuestsForm 
-                                            hideGuest={this.hideGuest}
+                                            hideGuests={this.hideGuests}
                                             updateGuests={this.updateGuests}
                                             params={this.props.match.params}
                                             eventId={this.props.match.params.id}

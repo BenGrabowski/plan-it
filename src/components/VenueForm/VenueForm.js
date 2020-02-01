@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import EventsContext from '../../EventsContext';
+import EventApiService from '../../services/events-api-service';
+import TokenService from '../../services/token-service';
 
 class VenueForm extends Component {
     static contextType = EventsContext;
@@ -11,6 +13,18 @@ class VenueForm extends Component {
         address_state: '',
         address_zip: '',
         displayVenue: false
+    }
+
+    componentDidMount() {
+        if(this.props.params) {
+            this.setState({
+                name: this.context.selectedEvent.venue.name,
+                address_street: this.context.selectedEvent.venue.address_street,
+                address_city: this.context.selectedEvent.venue.address_city,
+                address_state: this.context.selectedEvent.venue.address_state,
+                address_zip: this.context.selectedEvent.venue.address_zip,
+            });
+        }
     }
 
    updateName = event => {
@@ -47,8 +61,14 @@ class VenueForm extends Component {
         this.setState({ displayVenue: true })   
    }
 
-   submitVenue = event => {
-        event.preventDefault();   
+   displayForm = () => {
+       this.setState({ displayVenue: false })
+   }
+
+   submitVenue = () => {
+        // event.preventDefault();   
+        const user_id = TokenService.getUserId();
+
         const venue = {
             name: this.state.name,
             address_street: this.state.address_street,
@@ -56,6 +76,33 @@ class VenueForm extends Component {
             address_state: this.state.address_state,
             address_zip: this.state.address_zip,    
         }
+
+        if(!this.props.newEvent) {
+            let newVenueFields = this.context.selectedEvent;
+            newVenueFields.venue = venue;
+
+            EventApiService.patchEvent(
+                user_id,
+                this.context.selectedEvent.id,
+                newVenueFields
+            )
+                .then(() => {
+                    EventApiService.getEvents(user_id)
+                        .then(events => {
+                            this.props.hideVenue();
+                            this.context.setEvents(events);
+                        })
+                        .then(() => {
+                            EventApiService.getEvent(
+                                this.props.eventId,
+                                user_id
+                            )
+                                .then(event => this.context.setSelectedEvent(event))
+                        })
+                })
+                .catch(err => this.context.setError(err));
+        }
+
         this.props.updateVenue(venue);
         this.displayVenue();
    }
@@ -70,6 +117,7 @@ class VenueForm extends Component {
                 <p>{this.state.address_city}</p>
                 <p>{this.state.address_state}</p>
                 <p>{this.state.address_zip}</p>
+                <button onClick={this.displayForm}>Edit</button>
             </div>
             :
             <div>
@@ -80,7 +128,7 @@ class VenueForm extends Component {
                         type="text" 
                         name="venue-name" 
                         onChange={event => this.updateName(event)}
-                        value={this.props.displayVenueForm ? this.context.selectedEvent.venue.name : undefined} 
+                        value={this.state.name} 
                     />
                 </div>
 
@@ -90,7 +138,7 @@ class VenueForm extends Component {
                         type="text" 
                         name="address_street" 
                         onChange={event => this.updateStreet(event)}
-                        value={this.props.displayVenueForm ? this.context.selectedEvent.venue.address_street : undefined}  
+                        value={this.state.address_street}  
                     />
                 </div>
 
@@ -100,7 +148,7 @@ class VenueForm extends Component {
                         type="text" 
                         name="address_city" 
                         onChange={event => this.updateCity(event)}
-                        value={this.props.displayVenueForm ? this.context.selectedEvent.venue.address_city : undefined}  
+                        value={this.state.address_city}  
                     />
                 </div>
 
@@ -111,7 +159,7 @@ class VenueForm extends Component {
                         name="address_state" 
                         maxLength="2" 
                         onChange={event => this.updateState(event)}
-                        value={this.props.displayVenueForm ? this.context.selectedEvent.venue.address_state : undefined}  
+                        value={this.state.address_state}  
                     />
                 </div>
 
@@ -122,7 +170,7 @@ class VenueForm extends Component {
                         name="venue-name" 
                         maxLength="5" 
                         onChange={event => this.updateZip(event)}
-                        value={this.props.displayVenueForm ? this.context.selectedEvent.venue.address_zip : undefined} 
+                        value={this.state.address_zip} 
                     />
                 </div>
                 <button onClick={event => this.submitVenue(event)}>Done</button>

@@ -4,14 +4,44 @@ import EventsContext from '../../EventsContext';
 class Budget extends Component {   
     static contextType = EventsContext;
     
+    state = {
+        total: this.context.selectedEvent.budget.total,
+        venue: this.context.selectedEvent.budget.venue,
+        food: this.context.selectedEvent.budget.food,
+        drinks: this.context.selectedEvent.budget.drinks,
+        decorations: this.context.selectedEvent.budget.decorations,
+        other: this.context.selectedEvent.budget.other
+    };
+    
     render() {
-        const remainingBudget = this.context.selectedEvent.budget.total - this.context.selectedEvent.budget.venue - 
-        this.context.selectedEvent.budget.food - this.context.selectedEvent.budget.drinks - this.context.selectedEvent.budget.decorations - this.context.selectedEvent.budget.other;
+        function sum(total, num) {
+            return parseInt(total) + parseInt(num);
+        }
+        
+        const { total } = this.state;
+
+        const budgetArray = Object.values(this.state);
+        budgetArray.shift();
+
+        const filteredArray = budgetArray.filter(Boolean);
+        console.log(filteredArray);
+
+        let sumArray;
+        
+        filteredArray.length
+        ? sumArray = filteredArray.reduce(sum)
+        : sumArray = 0;
+        // const sumArray = filteredArray.reduce(sum);
+
+        
+
+        const remaining = total - sumArray;
+        // const remaining = 100;
         
         return (
             <section className="budget">
                 <p className="total-budget">Budget: ${this.context.selectedEvent.budget.total}</p>
-                <p>Remaining Budget: ${remainingBudget}</p>
+                <p>Remaining Budget: ${remaining}</p>
                 <p>Venue: ${this.context.selectedEvent.budget.venue}</p>
                 <p>Food: ${this.context.selectedEvent.budget.food}</p>
                 <p>Drinks: ${this.context.selectedEvent.budget.drinks}</p>

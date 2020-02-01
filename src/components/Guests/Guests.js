@@ -79,6 +79,7 @@ class Guests extends Component {
                 { this.state.addingGuest ? <AddGuests hideGuest={this.hideAddingGuest} /> : null }
                 {/* { this.props.displayGuestForm ? null : <button onClick={this.props.setAddingGuest}>Add Guest</button> } */}
                 <button onClick={this.setAddingGuest}>Add Guest</button>
+                <button onClick={() => this.props.displayGuestForm()}>Edit</button>
             </section>
         );
     }

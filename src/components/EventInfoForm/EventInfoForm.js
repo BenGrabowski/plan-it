@@ -8,12 +8,27 @@ class EventInfoForm extends Component {
     static contextType = EventsContext;
     
     state = {
-        event_name: this.context.selectedEvent.event_name,
-        event_date: moment(this.context.selectedEvent.event_date, moment.ISO_8601).format('YYYY-MM-DD'),
-        event_start: this.context.selectedEvent.event_start,
-        event_end: this.context.selectedEvent.event_end
+        // event_name: this.context.selectedEvent.event_name,
+        // event_date: moment(this.context.selectedEvent.event_date, moment.ISO_8601).format('YYYY-MM-DD'),
+        // event_start: this.context.selectedEvent.event_start,
+        // event_end: this.context.selectedEvent.event_end
+        event_name: '',
+        event_date: '',
+        event_start: '',
+        event_end: '',
     };
     
+    
+    componentDidMount() {
+        if (this.props.params) {
+            this.setState({
+                event_name: this.context.selectedEvent.event_name,
+                event_date: moment(this.context.selectedEvent.event_date, moment.ISO_8601).format('YYYY-MM-DD'),
+                event_start: this.context.selectedEvent.event_start,
+                event_end: this.context.selectedEvent.event_end
+            })
+        }
+    }
     
     submitEventInfo = () => {
         const user_id = TokenService.getUserId();
@@ -77,7 +92,7 @@ class EventInfoForm extends Component {
                             type="text" 
                             name="event-name" 
                             onChange={event => this.updateEventName(event)}
-                            value={this.props.displayEventInfoForm ? this.state.event_name : undefined}
+                            value={this.state.event_name}
                         />
                     </div>
 
@@ -87,7 +102,7 @@ class EventInfoForm extends Component {
                             type="date" 
                             name="event-date" 
                             onChange={event => this.updateEventDate(event)}
-                            value={this.props.displayEventInfoForm ? this.state.event_date : undefined}
+                            value={this.state.event_date}
                         />
                     </div>
 
@@ -97,7 +112,7 @@ class EventInfoForm extends Component {
                             type="time" 
                             name="start-time" 
                             onChange={event => this.updateEventStart(event)}
-                            value={this.props.displayEventInfoForm ? this.state.event_start : undefined}
+                            value={this.state.event_start}
                         />
                     </div>
 
@@ -107,7 +122,7 @@ class EventInfoForm extends Component {
                             type="time" 
                             name="end-time" 
                             onChange={event => this.updateEventEnd(event)}
-                            value={this.props.displayEventInfoForm ? this.state.event_end : undefined}
+                            value={this.state.event_end}
                         />
                     </div>
                     <button onClick={event => this.submitEventInfo(event)}>Done</button>

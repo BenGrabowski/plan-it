@@ -7,10 +7,18 @@ class GuestsForm extends Component {
     static contextType = EventsContext;
     
     state = {
-        max: 0,
+        max: '',
         list: [],
         displayGuests: false
     };
+
+    componentDidMount() {
+        if (this.props.params) {
+            this.setState({
+                max: this.context.selectedEvent.guests.max
+            });
+        }
+    }
 
     updateMax = event => {
         this.setState({ max: event.target.value });
@@ -18,6 +26,10 @@ class GuestsForm extends Component {
 
     displayGuests = () => {
         this.setState({ displayGuests: true });
+    }
+
+    displayForm = () => {
+        this.setState({ displayGuests: false });
     }
 
     submitGuests = () => {
@@ -42,7 +54,7 @@ class GuestsForm extends Component {
                 .then(() => {
                     EventApiService.getEvents(user_id)
                         .then(events => {
-                            this.props.hideGuest();
+                            this.props.hideGuests();
                             this.context.setEvents(events);
                         })
                         .then(() => {
@@ -63,15 +75,23 @@ class GuestsForm extends Component {
     render() {
         return (
             this.state.displayGuests
-            ? <p>Max Guests: {this.state.max}</p>
+            ? <div>
+                <p>Max Guests: {this.state.max}</p>
+                <button onClick={this.displayForm}>Edit</button>
+            </div>
             :<div>
                 <h3>Guests</h3>
                 <div>
                     <label htmlFor="guests-max">Max: </label>
-                    <input type="number" name="guests-max" onChange={event => this.updateMax(event)} />
+                    <input 
+                        type="number" 
+                        name="guests-max" 
+                        onChange={event => this.updateMax(event)}
+                        value={this.state.max} 
+                    />
                 </div>
                 <button onClick={event => this.submitGuests(event)}>Done</button>
-                <button onClick={() => this.props.hideGuest()}>Cancel</button>
+                <button onClick={() => this.props.hideGuests()}>Cancel</button>
             </div>
         );
     }

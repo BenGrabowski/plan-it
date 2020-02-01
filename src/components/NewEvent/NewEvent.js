@@ -148,8 +148,6 @@ class NewEvent extends Component {
                             onChange={event => this.updateEventEnd(event)}
                         />
                     </div>
-                    {/* <button onClick={event => this.submitEventInfo(event)}>Done</button>
-                    <button onClick={() => this.props.hideEventInfo()}>Cancel</button>                 */}
                 </section>
             
                 <div className="add-buttons">
@@ -158,7 +156,9 @@ class NewEvent extends Component {
                         ? <VenueForm 
                             updateVenue={this.updateVenue} 
                             hideVenue={this.hideVenue} 
-                            newEvent={true} /> 
+                            newEvent={true} 
+                            setDisplayVenue={this.setDisplayVenue}
+                        /> 
                         : null 
                     }
 
@@ -170,7 +170,7 @@ class NewEvent extends Component {
                             newEvent={true} /> 
                         : null 
                     }
-                    
+
                     { this.state.displayGuests ? null : <button onClick={this.setDisplayGuests}>Add Guest Count</button> }
                     { this.state.displayGuests 
                         ? <GuestsForm 

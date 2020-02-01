@@ -3,7 +3,7 @@ import TokenService from './token-service';
 
 const EventApiService = {
     getEvents(user_id) {
-        return fetch(`${config.API_ENDPOINT}/events`, {
+        return fetch(`${config.API_BASE_URL}/events`, {
             headers: {
                 'Authorization': `bearer ${TokenService.getAuthToken()}`,
                 'user_id': user_id,
@@ -16,7 +16,7 @@ const EventApiService = {
         );
     },
     getEvent(eventId, user_id) {
-        return fetch(`${config.API_ENDPOINT}/events/${eventId}`, {
+        return fetch(`${config.API_BASE_URL}/events/${eventId}`, {
             headers: {
                 'Authorization': `bearer ${TokenService.getAuthToken()}`,
                 'user_id': user_id,
@@ -29,7 +29,7 @@ const EventApiService = {
         );
     },
     postEvent(user_id, event_name, event_date, event_start, event_end, venue, budget, guests) {
-        return fetch(`${config.API_ENDPOINT}/events`, {
+        return fetch(`${config.API_BASE_URL}/events`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -54,7 +54,7 @@ const EventApiService = {
         );
     },
     patchEvent(user_id, eventId, newEvent) {
-        return fetch(`${config.API_ENDPOINT}/events/${eventId}`, {
+        return fetch(`${config.API_BASE_URL}/events/${eventId}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -66,7 +66,7 @@ const EventApiService = {
         .catch(error => console.log(error));
     },
     deleteEvent(user_id, eventId) {
-        return fetch(`${config.API_ENDPOINT}/events/${eventId}`, {
+        return fetch(`${config.API_BASE_URL}/events/${eventId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

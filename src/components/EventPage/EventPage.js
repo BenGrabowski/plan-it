@@ -120,57 +120,61 @@ class EventPage extends Component {
                     } else {
                         return (
                             <div className="event-page">
-                                
-                                { this.state.displayEventInfoForm 
-                                ? <EventInfoForm 
-                                    displayEventInfoForm={this.state.displayEventInfoForm} 
-                                    hideEventInfo={this.hideEventInfo}
-                                    eventId={this.props.match.params.id}
-                                    params={this.props.match.params}
-                                />
-                                : <Event 
-                                    name={context.selectedEvent.event_name}
-                                    date={context.selectedEvent.event_date}
-                                    start={context.selectedEvent.event_start}
-                                    end={context.selectedEvent.event_end}
-                                />}
-                                <button onClick={this.displayEventInfoForm}>Edit Event</button>
-
-
-                                { this.state.displayVenueForm 
-                                    ? <VenueForm 
-                                        hideVenue={this.hideVenue}
-                                        displayVenueForm={this.state.displayVenueForm}
-                                        updateVenue={this.updateVenue}
-                                        params={this.props.match.params}
+                                <div className="info-venue">
+                                    { this.state.displayEventInfoForm 
+                                    ? <EventInfoForm 
+                                        displayEventInfoForm={this.state.displayEventInfoForm} 
+                                        hideEventInfo={this.hideEventInfo}
                                         eventId={this.props.match.params.id}
-                                    /> 
-                                    : <Venue /> }
-                                
-                                {this.state.displayVenueForm ? null : <button onClick={this.displayVenueForm}>Edit Venue</button>}
-                                
-    
-                                <div className="budget-guest">
-                                    {this.state.displayBudgetForm 
-                                        ? <BudgetForm 
-                                            hideBudget={this.hideBudget} 
-                                            displayBudgetForm={this.state.displayBudgetForm}
-                                            editEvent={true}
+                                        params={this.props.match.params}
+                                    />
+                                    : <Event 
+                                        name={context.selectedEvent.event_name}
+                                        date={context.selectedEvent.event_date}
+                                        start={context.selectedEvent.event_start}
+                                        end={context.selectedEvent.event_end}
+                                    />}
+                                    { this.state.displayEventInfoForm ? null : <button onClick={this.displayEventInfoForm}>Edit Event</button>}
+
+
+                                    { this.state.displayVenueForm 
+                                        ? <VenueForm 
+                                            hideVenue={this.hideVenue}
+                                            displayVenueForm={this.state.displayVenueForm}
+                                            updateVenue={this.updateVenue}
                                             params={this.props.match.params}
-                                            updateBudget={this.updateBudget}
                                             eventId={this.props.match.params.id}
                                         /> 
-                                        : this.renderBudget()
-                                    }
+                                        : <Venue /> }
+                                    
+                                    {this.state.displayVenueForm ? null : <button onClick={this.displayVenueForm}>Edit Venue</button>}
+                                </div>
+    
+                                <div className="budget-guest">
+                                    <section>
+                                        {this.state.displayBudgetForm 
+                                            ? <BudgetForm 
+                                                hideBudget={this.hideBudget} 
+                                                displayBudgetForm={this.state.displayBudgetForm}
+                                                editEvent={true}
+                                                params={this.props.match.params}
+                                                updateBudget={this.updateBudget}
+                                                eventId={this.props.match.params.id}
+                                            /> 
+                                            : this.renderBudget()
+                                        }
+                                    </section>
 
-                                    {this.state.displayGuestForm
-                                        ? <GuestsForm 
-                                            hideGuests={this.hideGuests}
-                                            updateGuests={this.updateGuests}
-                                            params={this.props.match.params}
-                                            eventId={this.props.match.params.id}
-                                        />
-                                        : this.renderGuests()}
+                                    <section>
+                                        {this.state.displayGuestForm
+                                            ? <GuestsForm 
+                                                hideGuests={this.hideGuests}
+                                                updateGuests={this.updateGuests}
+                                                params={this.props.match.params}
+                                                eventId={this.props.match.params.id}
+                                            />
+                                            : this.renderGuests()}                                        
+                                    </section>
                                 </div>
                                 <DeleteButton id={context.selectedEvent.id} history={this.props.history} />
                                 <Link to='/events' className="back">Back</Link>

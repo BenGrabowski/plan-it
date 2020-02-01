@@ -34,16 +34,29 @@
 @media screen and (max-width: 450px) {
     .nav-bar {
         flex-direction: column;
-        margin-top: 100px;
+        margin-top: 75px;
         border-bottom: 2px solid black;
+    }
+
+    .logged-in {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .not-logged-in {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
     }
 
     .app-name {
         margin: 0 auto;
+        /* margin-bottom: 10px; */
     }
 
     .nav-links {
         flex-direction: column;
-        margin-top: 30px;
+        margin-top: 15px;
     }
 }

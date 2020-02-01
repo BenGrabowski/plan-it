@@ -128,7 +128,7 @@ class BudgetForm extends Component {
                 <p>Other: {this.state.other}</p>
                 <button onClick={this.displayForm}>Edit</button>
             </div>
-            : <div>
+            : <div className="budget-form">
                 <h3>Budget</h3>
                 <div>
                     <label htmlFor="budget-total">Total: </label>

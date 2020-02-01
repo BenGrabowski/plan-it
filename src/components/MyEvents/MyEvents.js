@@ -18,7 +18,6 @@ class MyEvents extends Component {
         this.context.clearError();
         const user_id = TokenService.getUserId();
         EventsApiService.getEvents(user_id)
-            // .then(res=> console.log(res))
             .then(res => {
                 this.context.setEvents(res);
             })
@@ -28,7 +27,7 @@ class MyEvents extends Component {
     render() {
 
         const events = this.context.events.map((event, index) => {
-            return <div className="event-box">
+            return <div className="event-box" key={index}>
                         <Event 
                             key={index}
                             id={event.id} 

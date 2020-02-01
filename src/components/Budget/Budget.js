@@ -24,19 +24,14 @@ class Budget extends Component {
         budgetArray.shift();
 
         const filteredArray = budgetArray.filter(Boolean);
-        console.log(filteredArray);
 
         let sumArray;
         
         filteredArray.length
         ? sumArray = filteredArray.reduce(sum)
         : sumArray = 0;
-        // const sumArray = filteredArray.reduce(sum);
-
-        
 
         const remaining = total - sumArray;
-        // const remaining = 100;
         
         return (
             <section className="budget">
@@ -47,7 +42,9 @@ class Budget extends Component {
                 <p>Drinks: ${this.context.selectedEvent.budget.drinks}</p>
                 <p>Decorations: ${this.context.selectedEvent.budget.decorations}</p>
                 <p>Other: ${this.context.selectedEvent.budget.other}</p>
-                <button onClick={() => this.props.displayBudgetForm()}>Edit</button>
+                <div className="edit-button">
+                    <button onClick={() => this.props.displayBudgetForm()}>Edit</button>
+                </div>
             </section>
         );
     }

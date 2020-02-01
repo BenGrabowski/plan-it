@@ -52,8 +52,10 @@ class AddGuests extends Component {
         return (
             <div>
                 <input type="text" name="add-guest" onChange={this.updateGuest} />
-                <button onClick={() => this.handleAddGuest()}>Add</button>
-                <button onClick={() => this.props.hideGuest()}>Cancel</button>
+                <div>
+                    <button onClick={() => this.handleAddGuest()}>Add</button>
+                    <button onClick={() => this.props.hideGuest()}>Cancel</button>                    
+                </div>
             </div>
         );
     }

@@ -1,0 +1,28 @@
+.guest-list {
+    height: 150px;
+    overflow: auto;
+    /* margin-bottom: 5px; */
+}
+
+::-webkit-scrollbar-thumb {
+    color: white;
+}
+
+.guest-max {
+    margin-top: 0px;
+    /* margin-bottom: 3px; */
+}
+
+.total-budget {
+    margin-top: 0px;
+}
+
+.edit-button {
+    /* width: 50px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+    align-items: center;
+    width: 100%;
+}

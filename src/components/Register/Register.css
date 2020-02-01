@@ -16,3 +16,11 @@
 .register > h2 {
     margin-top: 0;
 }
+
+@media screen and (max-width: 450px) {
+    .register {
+        border: none;
+        margin: none;
+        width: 100%;
+    }
+}

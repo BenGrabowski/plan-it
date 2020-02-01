@@ -19,7 +19,7 @@ class Event extends Component {
     
     render() {
         return (
-            <section>
+            <section className="event-info">
                 <Link 
                     to={`/events/${this.props.id}`} 
                     className="event-name-link"

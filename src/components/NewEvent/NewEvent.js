@@ -7,7 +7,6 @@ import BudgetForm from '../BudgetForm/BudgetForm';
 import GuestsForm from '../GuestsForm/GuestsForm';
 import TokenService from '../../services/token-service';
 import EventApiService from '../../services/events-api-service';
-// import EventInfoForm from '../EventInfoForm/EventInfoForm';
 
 class NewEvent extends Component {
     static contextType = EventsContext;
@@ -29,6 +28,10 @@ class NewEvent extends Component {
         window.scrollTo(0, 0);
         this.context.clearSelectedEvent();
     }
+
+    // validateFields = event => {
+
+    // }
 
     handleAddEvent = event => {
         event.preventDefault();
@@ -119,6 +122,7 @@ class NewEvent extends Component {
                             type="text" 
                             name="event-name" 
                             onChange={event => this.updateEventName(event)}
+                            required
                         />
                     </div>
 
@@ -128,6 +132,7 @@ class NewEvent extends Component {
                             type="date" 
                             name="event-date" 
                             onChange={event => this.updateEventDate(event)}
+                            required
                         />
                     </div>
 

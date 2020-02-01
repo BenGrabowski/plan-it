@@ -79,7 +79,7 @@ class GuestsForm extends Component {
                 <p>Max Guests: {this.state.max}</p>
                 <button onClick={this.displayForm}>Edit</button>
             </div>
-            :<div>
+            :<div className="guest-form">
                 <h3>Guests</h3>
                 <div>
                     <label htmlFor="guests-max">Max: </label>

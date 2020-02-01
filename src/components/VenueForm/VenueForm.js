@@ -66,7 +66,6 @@ class VenueForm extends Component {
    }
 
    submitVenue = () => {
-        // event.preventDefault();   
         const user_id = TokenService.getUserId();
 
         const venue = {

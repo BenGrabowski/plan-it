@@ -4,6 +4,7 @@ import AddGuests from '../AddGuests/AddGuests';
 import GuestItem from '../GuestItem/GuestItem';
 import TokenService from '../../services/token-service';
 import EventApiService from '../../services/events-api-service';
+import './Guests.css';
 
 class Guests extends Component {
     static contextType = EventsContext;
@@ -20,12 +21,17 @@ class Guests extends Component {
         this.setState({ addingGuest: false });
     }
 
+    renderAddGuestButton = () => {
+        return this.state.addingGuest
+        ? null
+        : <button onClick={this.setAddingGuest}>Add Guest</button>
+    }
+
     handleDeleteGuest = index => {
         const user_id = TokenService.getUserId();
         let currentList = this.context.selectedEvent.guests.list;
         currentList.splice(index, 1);
         const newList = currentList;
-        // console.log(newGuestFields);
 
         const newGuestFields = this.context.selectedEvent;
         newGuestFields.guests.list = newList;
@@ -56,8 +62,6 @@ class Guests extends Component {
     render() {
         const spotsRemaining = this.context.selectedEvent.guests.max - this.context.selectedEvent.guests.list.length;
         
-        // const currentGuestList = this.context.selectedEvent.guests.list
-        
         const guests = this.context.selectedEvent.guests.list.map((guest, index) => {
            return (
                 <GuestItem 
@@ -72,14 +76,24 @@ class Guests extends Component {
         return (
             <section className="guest">
                 <p className="guest-max">Maximum # of Guests: {this.context.selectedEvent.guests.max}</p>
+                
+                <div className="edit-button">
+                    <button 
+                        onClick={() => this.props.displayGuestForm()}
+                    >
+                        Edit
+                    </button>                
+                </div>
+
                 <p>Spots Remaining: {spotsRemaining}</p>
-                <ul>
+                <ul className="guest-list">
                     {guests}
                 </ul>
                 { this.state.addingGuest ? <AddGuests hideGuest={this.hideAddingGuest} /> : null }
-                {/* { this.props.displayGuestForm ? null : <button onClick={this.props.setAddingGuest}>Add Guest</button> } */}
-                <button onClick={this.setAddingGuest}>Add Guest</button>
-                <button onClick={() => this.props.displayGuestForm()}>Edit</button>
+                {/* <button onClick={this.setAddingGuest}>Add Guest</button> */}
+                <div className="edit-button">
+                    {this.renderAddGuestButton()}
+                </div>
             </section>
         );
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EventsContext from '../../EventsContext';
 import TokenService from '../../services/token-service';
 import EventApiService from '../../services/events-api-service';
+import './BudgetForm.css';
 
 class BudgetForm extends Component {
     static contextType = EventsContext;
@@ -189,8 +190,10 @@ class BudgetForm extends Component {
                         defaultValue={this.state.other} 
                     />
                 </div>
-                <button onClick={event => this.submitBudget(event)}>Done</button>
-                <button onClick={() => this.props.hideBudget()}>Cancel</button>
+                <div className="budget-form-buttons">
+                    <button onClick={event => this.submitBudget(event)}>Done</button>
+                    <button onClick={() => this.props.hideBudget()}>Cancel</button>                
+                </div>
             </div>
         );
     }

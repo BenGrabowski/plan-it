@@ -1,0 +1,7 @@
+.venue {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    line-height: .1;
+    font-size: 20px;
+}

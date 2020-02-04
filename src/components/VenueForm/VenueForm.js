@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EventsContext from '../../EventsContext';
 import EventApiService from '../../services/events-api-service';
 import TokenService from '../../services/token-service';
+import './VenueForm.css';
 
 class VenueForm extends Component {
     static contextType = EventsContext;
@@ -119,7 +120,7 @@ class VenueForm extends Component {
                 <button onClick={this.displayForm}>Edit</button>
             </div>
             :
-            <div>
+            <div className="venue-form">
                 <h3>Venue</h3>
                 <div>
                     <label htmlFor="venue-name">Name:</label>
@@ -172,8 +173,10 @@ class VenueForm extends Component {
                         value={this.state.address_zip} 
                     />
                 </div>
-                <button onClick={event => this.submitVenue(event)}>Done</button>
-                <button onClick={() => this.props.hideVenue()}>Cancel</button>
+                <div className="venue-form-buttons">
+                    <button onClick={event => this.submitVenue(event)}>Done</button>
+                    <button onClick={() => this.props.hideVenue()}>Cancel</button>
+                </div>
             </div>
         );
     }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import EventsContext from '../../EventsContext';
+import './Budget.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Budget extends Component {   
     static contextType = EventsContext;
@@ -36,14 +38,19 @@ class Budget extends Component {
         return (
             <section className="budget">
                 <p className="total-budget">Budget: ${this.context.selectedEvent.budget.total}</p>
-                <p>Remaining Budget: ${remaining}</p>
-                <p>Venue: ${this.context.selectedEvent.budget.venue}</p>
-                <p>Food: ${this.context.selectedEvent.budget.food}</p>
-                <p>Drinks: ${this.context.selectedEvent.budget.drinks}</p>
-                <p>Decorations: ${this.context.selectedEvent.budget.decorations}</p>
-                <p>Other: ${this.context.selectedEvent.budget.other}</p>
+                <p className="budget-item">Remaining Budget: ${remaining}</p>
+                <p className="budget-item">Venue: ${this.context.selectedEvent.budget.venue}</p>
+                <p className="budget-item">Food: ${this.context.selectedEvent.budget.food}</p>
+                <p className="budget-item">Drinks: ${this.context.selectedEvent.budget.drinks}</p>
+                <p className="budget-item">Decorations: ${this.context.selectedEvent.budget.decorations}</p>
+                <p className="budget-item">Other: ${this.context.selectedEvent.budget.other}</p>
                 <div className="edit-button">
-                    <button onClick={() => this.props.displayBudgetForm()}>Edit</button>
+                    <button 
+                        onClick={() => this.props.displayBudgetForm()}
+                        className="edit"
+                    >
+                        <FontAwesomeIcon icon="edit" /> Edit
+                    </button>
                 </div>
             </section>
         );

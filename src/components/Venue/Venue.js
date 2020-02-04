@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EventsContext from '../../EventsContext';
+import './Venue.css';
 
 class Venue extends Component {
     static contextType = EventsContext;

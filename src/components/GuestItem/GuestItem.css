@@ -1,3 +1,13 @@
-.guest-name {
-    margin-right: 10px;
+.guest-item {
+    margin-bottom: 5px;
 }
+
+.remove-guest {
+    background: none;
+    border: none;
+}
+
+.remove-guest:hover {
+    cursor: pointer;
+}
+

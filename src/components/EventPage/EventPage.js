@@ -13,6 +13,7 @@ import Venue from '../Venue/Venue';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import BudgetForm from '../BudgetForm/BudgetForm';
 import GuestsForm from '../GuestsForm/GuestsForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class EventPage extends Component {
     static contextType = EventsContext;
@@ -134,7 +135,15 @@ class EventPage extends Component {
                                         start={context.selectedEvent.event_start}
                                         end={context.selectedEvent.event_end}
                                     />}
-                                    { this.state.displayEventInfoForm ? null : <button onClick={this.displayEventInfoForm}>Edit Event</button>}
+                                    { this.state.displayEventInfoForm 
+                                        ? null 
+                                        : <button 
+                                            onClick={this.displayEventInfoForm}
+                                            className="edit-event-button"
+                                        >
+                                            <FontAwesomeIcon icon="edit" />Edit Event
+                                        </button>
+                                    }
 
 
                                     { this.state.displayVenueForm 
@@ -147,7 +156,14 @@ class EventPage extends Component {
                                         /> 
                                         : <Venue /> }
                                     
-                                    {this.state.displayVenueForm ? null : <button onClick={this.displayVenueForm}>Edit Venue</button>}
+                                    {this.state.displayVenueForm 
+                                        ? null 
+                                        : <button 
+                                            onClick={this.displayVenueForm}
+                                            className="edit-venue-button"
+                                        >
+                                           <FontAwesomeIcon icon="edit" /> Edit Venue
+                                        </button>}
                                 </div>
     
                                 <div className="budget-guest">
@@ -177,7 +193,9 @@ class EventPage extends Component {
                                     </section>
                                 </div>
                                 <DeleteButton id={context.selectedEvent.id} history={this.props.history} />
-                                <Link to='/events' className="back">Back</Link>
+                                <Link to='/events' className="back">
+                                    <FontAwesomeIcon icon="arrow-alt-circle-left" />
+                                </Link>
                             </div>
                         );    
                     } 

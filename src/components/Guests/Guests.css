@@ -1,3 +1,10 @@
+.guest {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .guest-list {
     height: 150px;
     overflow: auto;
@@ -10,6 +17,8 @@
 
 .guest-max {
     margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
     /* margin-bottom: 3px; */
 }
 

@@ -6,7 +6,7 @@ class LandingPage extends Component {
         return (
             <div className="landing-page">
                 <section className="hero">
-                    {/* <h1 className="hero-heading">PlanIt</h1> */}
+                    <h1 className="hero-heading">PlanIt</h1>
                     <p className="tagline">Make sure your next event goes off without a hitch</p>
                 </section>
 

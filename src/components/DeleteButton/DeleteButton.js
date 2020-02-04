@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import EventsContext from '../../EventsContext';
 import EventApiService from '../../services/events-api-service';
 import TokenService from '../../services/token-service';
+import './DeleteButton.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class DeleteButton extends Component {
     static contextType = EventsContext;
@@ -23,7 +25,12 @@ class DeleteButton extends Component {
     
     render() {
         return (
-            <button onClick={this.handleDeleteEvent}>Delete</button>
+            <button 
+                onClick={this.handleDeleteEvent}
+                className="delete-button"
+            >
+                <FontAwesomeIcon icon="trash" />
+            </button>
         );
     }
 }

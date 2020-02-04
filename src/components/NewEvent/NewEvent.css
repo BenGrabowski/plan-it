@@ -10,13 +10,15 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* .new-event-heading {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-} */
+.new-event-heading {
+    font-family: 'Galada', cursive;
+    font-size: 32px;
+}
 
 .add-buttons {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-top: 30px;
 }
 

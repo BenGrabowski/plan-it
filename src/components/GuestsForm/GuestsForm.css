@@ -1,0 +1,12 @@
+.guest-form button {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.guest-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

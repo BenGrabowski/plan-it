@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TokenService from '../../services/token-service';
 import EventApiService from '../../services/events-api-service';
 import EventsContext from '../../EventsContext';
+import './GuestsForm.css';
 
 class GuestsForm extends Component {
     static contextType = EventsContext;
@@ -90,8 +91,10 @@ class GuestsForm extends Component {
                         value={this.state.max} 
                     />
                 </div>
-                <button onClick={event => this.submitGuests(event)}>Done</button>
-                <button onClick={() => this.props.hideGuests()}>Cancel</button>
+                <div className="guest-form-buttons">
+                    <button onClick={event => this.submitGuests(event)}>Done</button>
+                    <button onClick={() => this.props.hideGuests()}>Cancel</button>                
+                </div>
             </div>
         );
     }

@@ -8,11 +8,14 @@
 .event-container {
     display: flex;
     flex-direction: row;
-    margin-bottom: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
 }
 
 .my-events-header {
     font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
 }
 
 .new-event-button {
@@ -21,4 +24,20 @@
     color: white;
     text-decoration: none;
     background: black;
+    border-radius: 10px;
+}
+
+.add {
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.add-event-button {
+    padding: 3px;
+}
+
+@media screen and (max-width: 450px) {
+    .new-event-button {
+        margin-bottom: 50px;
+    }
 }

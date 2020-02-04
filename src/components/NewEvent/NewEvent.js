@@ -7,6 +7,7 @@ import BudgetForm from '../BudgetForm/BudgetForm';
 import GuestsForm from '../GuestsForm/GuestsForm';
 import TokenService from '../../services/token-service';
 import EventApiService from '../../services/events-api-service';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class NewEvent extends Component {
     static contextType = EventsContext;
@@ -187,7 +188,9 @@ class NewEvent extends Component {
                 </div>
 
                 <button type="submit">Submit</button>
-                <Link to='/events' className="back">Back</Link>
+                <Link to='/events' className="back">
+                    <FontAwesomeIcon icon="arrow-alt-circle-left" />
+                </Link>
             </form>
         );
     }

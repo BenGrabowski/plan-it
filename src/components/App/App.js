@@ -9,6 +9,10 @@ import EventPage from '../EventPage/EventPage';
 import NewEvent from '../NewEvent/NewEvent';
 import { EventsProvider } from '../../EventsContext';
 import './App.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faArrowAltCircleLeft, faEdit, faTrash, faTimesCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faArrowAltCircleLeft, faEdit, faTrash, faTimesCircle, faPlus);
 
 class App extends Component {
   render() {

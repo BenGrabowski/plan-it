@@ -5,6 +5,7 @@ import GuestItem from '../GuestItem/GuestItem';
 import TokenService from '../../services/token-service';
 import EventApiService from '../../services/events-api-service';
 import './Guests.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Guests extends Component {
     static contextType = EventsContext;
@@ -80,8 +81,9 @@ class Guests extends Component {
                 <div className="edit-button">
                     <button 
                         onClick={() => this.props.displayGuestForm()}
+                        className="edit"
                     >
-                        Edit
+                        <FontAwesomeIcon icon="edit" /> Edit
                     </button>                
                 </div>
 

@@ -6,6 +6,7 @@ import EventsContext from '../../EventsContext';
 import TokenService from '../../services/token-service';
 import EventsApiService from '../../services/events-api-service';
 import DeleteButton from '../DeleteButton/DeleteButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class MyEvents extends Component {
     static contextType = EventsContext;
@@ -48,7 +49,10 @@ class MyEvents extends Component {
                     to='/new-event'
                     className="new-event-button"
                 >
-                    New Event
+                    <div className="add-event-button">
+                        <FontAwesomeIcon icon="plus" className="add" />
+                        Event
+                    </div>
                 </Link>
             </div>
         );

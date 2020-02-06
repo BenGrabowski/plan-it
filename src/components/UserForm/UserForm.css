@@ -4,6 +4,10 @@
     /* max-width: 50%; */
 }
 
+.user-inputs label {
+    font-family: 'Roboto', sans-serif;
+}
+
 label[for="user_name"] {
     margin-right: 10px;
     font-size: 20px;
@@ -19,6 +23,9 @@ label[for="password"] {
 input[name="user_name"], input[name="password"] {
     height: 19px;
     font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    padding: 3px;
+    height: 30px;
 }
 
 .password {

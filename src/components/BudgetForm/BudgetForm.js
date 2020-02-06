@@ -136,6 +136,7 @@ class BudgetForm extends Component {
                     <input 
                         type="number" 
                         name="budget-total" 
+                        className="form-input"
                         onChange={event => this.updateTotal(event)}
                         defaultValue={this.state.total} 
                     />
@@ -146,6 +147,7 @@ class BudgetForm extends Component {
                     <input 
                         type="number" 
                         name="budget-venue" 
+                        className="form-input"
                         onChange={event => this.updateVenue(event)} 
                         defaultValue={this.state.venue} 
                     />
@@ -156,6 +158,7 @@ class BudgetForm extends Component {
                     <input 
                         type="number" 
                         name="budget-food" 
+                        className="form-input"
                         onChange={event => this.updateFood(event)} 
                         defaultValue={this.state.food} 
                     />
@@ -165,7 +168,8 @@ class BudgetForm extends Component {
                     <label htmlFor="budget-drinks">Drinks: </label>
                     <input 
                         type="number" 
-                        name="budget-drinks" 
+                        name="budget-drinks"
+                        className="form-input" 
                         onChange={event => this.updateDrinks(event)} 
                         defaultValue={this.state.drinks} 
                     />
@@ -175,7 +179,8 @@ class BudgetForm extends Component {
                     <label htmlFor="budget-decorations">Decorations: </label>
                     <input 
                         type="number" 
-                        name="budget-decorations" 
+                        name="budget-decorations"
+                        className="form-input" 
                         onChange={event => this.updateDecorations(event)} 
                         defaultValue={this.state.decorations} 
                     />
@@ -185,7 +190,8 @@ class BudgetForm extends Component {
                     <label htmlFor="budget-other">Other: </label>
                     <input 
                         type="number" 
-                        name="budget-other" 
+                        name="budget-other"
+                        className="form-input" 
                         onChange={event => this.updateOther(event)} 
                         defaultValue={this.state.other} 
                     />

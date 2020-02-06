@@ -59,10 +59,12 @@ class Login extends Component {
                 className="register"
                 onSubmit={this.handleSubmitJwtAuth}
             >
-                <h2>Login</h2>
+                <h2 className="login-title">Login</h2>
                 {(error) ? this.renderInvalidMessage() : null}
                 <UserForm />
-                <button type="submit">Log In</button>
+                <button type="submit" className="login-button">
+                    Log In
+                </button>
             </form>
         );
     }

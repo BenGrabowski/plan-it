@@ -14,9 +14,12 @@ class GuestsForm extends Component {
     };
 
     componentDidMount() {
+        console.log(this.context.selectedEvent.guests.list)
+        
         if (this.props.params) {
             this.setState({
-                max: this.context.selectedEvent.guests.max
+                max: this.context.selectedEvent.guests.max,
+                // list: this.context.selectedEvent.guests.list
             });
         }
     }
@@ -35,7 +38,6 @@ class GuestsForm extends Component {
 
     submitGuests = () => {
         const user_id = TokenService.getUserId();
-        // const guests = this.state;
 
         const updatedGuests = {
             max: this.state.max,
@@ -44,8 +46,7 @@ class GuestsForm extends Component {
         
         if(!this.props.newEvent) {
             let newGuestFields = this.context.selectedEvent;
-            newGuestFields.guests = updatedGuests;
-            // console.log(newGuestFields)
+            newGuestFields.guests.max = updatedGuests;
 
             EventApiService.patchEvent(
                 user_id,
@@ -87,6 +88,7 @@ class GuestsForm extends Component {
                     <input 
                         type="number" 
                         name="guests-max" 
+                        className="form-input"
                         onChange={event => this.updateMax(event)}
                         value={this.state.max} 
                     />

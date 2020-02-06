@@ -121,7 +121,8 @@ class NewEvent extends Component {
                         <label htmlFor="event-name">Name:</label>
                         <input 
                             type="text" 
-                            name="event-name" 
+                            name="event-name"
+                            className="form-input" 
                             onChange={event => this.updateEventName(event)}
                             required
                         />
@@ -132,6 +133,7 @@ class NewEvent extends Component {
                         <input 
                             type="date" 
                             name="event-date" 
+                            className="form-input"
                             onChange={event => this.updateEventDate(event)}
                             required
                         />
@@ -142,6 +144,7 @@ class NewEvent extends Component {
                         <input 
                             type="time" 
                             name="start-time" 
+                            className="form-input"
                             onChange={event => this.updateEventStart(event)}
                         />
                     </div>
@@ -151,6 +154,7 @@ class NewEvent extends Component {
                         <input 
                             type="time" 
                             name="end-time" 
+                            className="form-input"
                             onChange={event => this.updateEventEnd(event)}
                         />
                     </div>

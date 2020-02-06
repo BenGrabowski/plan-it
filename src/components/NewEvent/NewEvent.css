@@ -28,8 +28,8 @@
 }
 
 .new-event input {
-    height: 19px;
-    font-size: 14px;
+    /* height: 19px; */
+    /* font-size: 14px; */
     margin: 5px;
 }
 
@@ -37,4 +37,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.form-input {
+    background: black;
+    border: 2px solid black;
+    color: black;
+    font-size: 16px;
+    border-radius: 7px;
+    height: 25px;
+    color: white;
+}
+
+.form-input:focus {
+    background: rgba(0,0,0,0);
+    color: black;
 }

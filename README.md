@@ -1,68 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# PlanIt
 
-## Available Scripts
+Link to Live App: https://plan-it.now.sh/
 
-In the project directory, you can run:
+## PlanIt is a full-stack web based application that allows users to create an account and plan events like Weddings, Bachelor Parties, and more. 
 
-### `npm start`
+ Users can login to view their Events, update the date & time, add a venue, manage the budget, and add guests to the guest list. They can also create new events and enter any known information, and add additional information at a later time. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ ## Technology Used
+ <ul>
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>React.js</li>
+    <li>Node.js</li>
+    <li>Express</li>
+    <li>PostgreSQL</li>
+ </ul>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+ ### Home Page
+ ![Home Page](./src/images/home-page.png)
 
-### `npm test`
+ ### Places List
+ ![Places List](./src/images/places-list.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ ### Place Page
+ ![Place Page](./src/images/place-page.png)
 
-### `npm run build`
+ ### Add Place
+ ![Add Place](./src/images/add-place.png)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ ### Registration
+ ![Registeration](./src/images/register.png)

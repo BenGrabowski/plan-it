@@ -25,19 +25,12 @@ class Register extends Component {
         .then(user => {
             user_name.value = ''
             password.value = ''
-            // this.handleRegistrationSuccess()
             this.props.history.push('/login')
         })
         .catch(res => {
             this.setState({ error: res.error })
-            // console.log(res.error);
         })
     }
-
-    // handleReigstrationSuccess = () => {
-    //     const { history } = this.props;
-    //     history.push('/login')
-    // }
 
     renderInvalidMessage = () => {
         return <p className="invalid-login">{this.state.error}</p>
@@ -51,10 +44,12 @@ class Register extends Component {
                 className="register"
                 onSubmit={this.handleSubmit}
             >
-                <h2>Create an Account</h2>
+                <h2 className="login-title">Create an Account</h2>
                 {(error) ? this.renderInvalidMessage() : null}
                 <UserForm />
-                <button type="submit">Register</button>
+                <button type="submit" className="login-button">
+                    Register
+                </button>
             </form>
         );
     }

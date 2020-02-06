@@ -127,6 +127,7 @@ class VenueForm extends Component {
                     <input 
                         type="text" 
                         name="venue-name" 
+                        className="form-input"
                         onChange={event => this.updateName(event)}
                         value={this.state.name} 
                     />
@@ -137,6 +138,7 @@ class VenueForm extends Component {
                     <input 
                         type="text" 
                         name="address_street" 
+                        className="form-input"
                         onChange={event => this.updateStreet(event)}
                         value={this.state.address_street}  
                     />
@@ -147,6 +149,7 @@ class VenueForm extends Component {
                     <input 
                         type="text" 
                         name="address_city" 
+                        className="form-input"
                         onChange={event => this.updateCity(event)}
                         value={this.state.address_city}  
                     />
@@ -158,6 +161,7 @@ class VenueForm extends Component {
                         type="text" 
                         name="address_state" 
                         maxLength="2" 
+                        className="form-input"
                         onChange={event => this.updateState(event)}
                         value={this.state.address_state}  
                     />
@@ -169,6 +173,7 @@ class VenueForm extends Component {
                         type="text" 
                         name="venue-name" 
                         maxLength="5" 
+                        className="form-input"
                         onChange={event => this.updateZip(event)}
                         value={this.state.address_zip} 
                     />

@@ -14,12 +14,12 @@ class GuestsForm extends Component {
     };
 
     componentDidMount() {
-        console.log(this.context.selectedEvent.guests.list)
+        // console.log(this.context.selectedEvent.guests.list)
         
         if (this.props.params) {
             this.setState({
                 max: this.context.selectedEvent.guests.max,
-                // list: this.context.selectedEvent.guests.list
+                list: this.context.selectedEvent.guests.list
             });
         }
     }
@@ -46,7 +46,11 @@ class GuestsForm extends Component {
         
         if(!this.props.newEvent) {
             let newGuestFields = this.context.selectedEvent;
-            newGuestFields.guests.max = updatedGuests;
+            newGuestFields.guests = updatedGuests;
+
+            // console.log(newGuestFields)
+
+            // return;
 
             EventApiService.patchEvent(
                 user_id,

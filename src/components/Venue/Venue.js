@@ -12,8 +12,10 @@ class Venue extends Component {
             <div className="venue">
                 <p className="event-venue">{venue.name}</p>
                 { venue.address_street !== '' ? <p className="venue-street">{venue.address_street}</p> : null }
-                { venue.address_city !=='' && venue.address_state !== '' ? <p className="venue-city-state-zip">{venue.address_city}, {venue.address_state} 
-                {venue.address_zip}</p> : null }
+                
+                { venue.address_city !=='' && venue.address_state !== '' 
+                ? <p className="venue-city-state-zip">{venue.address_city}, {venue.address_state} {venue.address_zip}</p> 
+                : null }
             </div>
         );
     }

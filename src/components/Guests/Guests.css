@@ -8,7 +8,8 @@
 .guest-list {
     height: 150px;
     overflow: auto;
-    /* margin-bottom: 5px; */
+    padding-left: 0;
+    width: 100px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -19,7 +20,6 @@
     margin-top: 0px;
     margin-bottom: 0px;
     text-align: center;
-    /* margin-bottom: 3px; */
 }
 
 .total-budget {
@@ -27,11 +27,9 @@
 }
 
 .edit-button {
-    /* width: 50px; */
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* align-items: center; */
     align-items: center;
     width: 100%;
 }

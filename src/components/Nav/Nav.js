@@ -26,7 +26,7 @@ class Nav extends Component {
                     id="my-events-link"
                     className="nav-link"
                 >
-                    My Events
+                    Events
                 </Link>
                 
                 <Link

@@ -10,6 +10,10 @@ class AddGuests extends Component {
     state = {
         newGuest: ''
     }
+
+    componentDidMount() {
+        this.nameInput.focus();
+    }
     
     updateGuest = event => {
         this.setState({ newGuest: event.target.value });
@@ -51,7 +55,13 @@ class AddGuests extends Component {
     render() {
         return (
             <div>
-                <input type="text" name="add-guest" className="form-input" onChange={this.updateGuest} />
+                <input 
+                    type="text" 
+                    name="add-guest" 
+                    className="form-input" 
+                    onChange={this.updateGuest} 
+                    ref={(input) => { this.nameInput = input; }}
+                />
                 <div>
                     <button onClick={() => this.handleAddGuest()}>Add</button>
                     <button onClick={() => this.props.hideGuest()}>Cancel</button>                    

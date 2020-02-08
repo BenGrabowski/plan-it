@@ -45,7 +45,6 @@ class Guests extends Component {
             .then(() => {
                 EventApiService.getEvents(user_id)
                     .then(events => {
-                        // this.props.hideGuest();
                         this.context.setEvents(events);
                     })
                     .then(() => {
@@ -92,7 +91,6 @@ class Guests extends Component {
                     {guests}
                 </ul>
                 { this.state.addingGuest ? <AddGuests hideGuest={this.hideAddingGuest} /> : null }
-                {/* <button onClick={this.setAddingGuest}>Add Guest</button> */}
                 <div className="edit-button">
                     {this.renderAddGuestButton()}
                 </div>

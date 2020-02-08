@@ -9,3 +9,9 @@
     margin-bottom: 15px;
     background: rgba(255, 255, 255, .7);
 }
+
+@media screen and (max-width: 450px) {
+    .venue {
+        line-height: initial;
+    }
+}

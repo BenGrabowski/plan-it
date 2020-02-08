@@ -30,10 +30,6 @@ class NewEvent extends Component {
         this.context.clearSelectedEvent();
     }
 
-    // validateFields = event => {
-
-    // }
-
     handleAddEvent = event => {
         event.preventDefault();
         const user_id = TokenService.getUserId();
@@ -135,6 +131,7 @@ class NewEvent extends Component {
                             name="event-date" 
                             className="form-input"
                             onChange={event => this.updateEventDate(event)}
+                            value={this.state.event_date}
                             required
                         />
                     </div>

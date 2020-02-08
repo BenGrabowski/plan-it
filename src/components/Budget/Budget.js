@@ -12,8 +12,23 @@ class Budget extends Component {
         food: this.context.selectedEvent.budget.food,
         drinks: this.context.selectedEvent.budget.drinks,
         decorations: this.context.selectedEvent.budget.decorations,
-        other: this.context.selectedEvent.budget.other
+        other: this.context.selectedEvent.budget.other,
+        overBudget: false
     };
+
+    renderOverBudget = () => {
+        return (
+            this.state.overBudget
+            ? <p>You have exceeded the budget!</p>
+            : null
+        );
+    }
+
+    setOverBudget = () => {
+        this.setState({
+            overBudget: true
+        });
+    }
     
     render() {
         function sum(total, num) {
@@ -34,11 +49,16 @@ class Budget extends Component {
         : sumArray = 0;
 
         const remaining = total - sumArray;
+
+        if (remaining < 0) {
+            this.setOverBudget();
+        }
         
         return (
             <section className="budget">
                 <p className="total-budget">Budget: ${this.context.selectedEvent.budget.total}</p>
-                <p className="budget-item">Remaining Budget: ${remaining}</p>
+                {this.renderOverBudget()}
+                <p className="budget-item">{this.state.overBudget ? '' : `Remaining Budget: ${remaining}`}</p>
                 <p className="budget-item">Venue: ${this.context.selectedEvent.budget.venue}</p>
                 <p className="budget-item">Food: ${this.context.selectedEvent.budget.food}</p>
                 <p className="budget-item">Drinks: ${this.context.selectedEvent.budget.drinks}</p>

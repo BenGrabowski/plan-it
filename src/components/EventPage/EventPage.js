@@ -66,6 +66,14 @@ class EventPage extends Component {
         );
     }
 
+    renderVenue = () => {
+        return (
+            this.context.selectedEvent.venue.name
+            ? <Venue />
+            : null
+        );
+    }
+
     displayEventInfoForm = () => {
         this.setState({ displayEventInfoForm: true });
     }
@@ -154,7 +162,8 @@ class EventPage extends Component {
                                             params={this.props.match.params}
                                             eventId={this.props.match.params.id}
                                         /> 
-                                        : <Venue /> }
+                                        // : <Venue /> }
+                                        : this.renderVenue()}
                                     
                                     {this.state.displayVenueForm 
                                         ? null 

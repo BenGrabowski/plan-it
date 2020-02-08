@@ -1,0 +1,9 @@
+.new-event-inputs label {
+    font-family: 'Merriweather', serif;
+    margin-right: 5px;
+}
+
+.new-event-inputs input {
+    margin-top: 7px;
+    font-family: 'Merriweather', serif;
+}

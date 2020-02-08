@@ -15,7 +15,8 @@
 
 .my-events-header {
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Merriweather', serif;
     font-size: 30px;
 }
 
@@ -35,6 +36,7 @@
 
 .add-event-button {
     padding: 3px;
+    font-family: 'Merriweather', serif;
 }
 
 @media screen and (max-width: 450px) {

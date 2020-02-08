@@ -3,6 +3,7 @@ import EventsContext from '../../EventsContext';
 import EventApiService from '../../services/events-api-service';
 import TokenService from '../../services/token-service';
 import moment from 'moment';
+import './EventInfoForm.css';
 // import DatePicker from 'react-datepicker';
 // import "react-datepicker/dist/react-datepicker.css";
 
@@ -92,6 +93,7 @@ class EventInfoForm extends Component {
                             name="event-name" 
                             onChange={event => this.updateEventName(event)}
                             value={this.state.event_name}
+                            className="form-input"
                         />
                     </div>
 
@@ -102,6 +104,7 @@ class EventInfoForm extends Component {
                             name="event-date" 
                             onChange={event => this.updateEventDate(event)}
                             value={this.state.event_date}
+                            className="form-input"
                         />
                         {/* <DatePicker
                             name="event-date" 
@@ -117,6 +120,7 @@ class EventInfoForm extends Component {
                             name="start-time" 
                             onChange={event => this.updateEventStart(event)}
                             value={this.state.event_start}
+                            className="form-input"
                         />
                     </div>
 
@@ -127,6 +131,7 @@ class EventInfoForm extends Component {
                             name="end-time" 
                             onChange={event => this.updateEventEnd(event)}
                             value={this.state.event_end}
+                            className="form-input"
                         />
                     </div>
                     <button onClick={event => this.submitEventInfo(event)}>Done</button>

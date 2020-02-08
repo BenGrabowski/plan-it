@@ -22,7 +22,14 @@
 .nav-links {
     display: flex;
     flex-direction: row;
+    /* display: inline-block; */
     font-size: 20px;
+}
+
+.nav-link:hover {
+    transform: translateY(-3px);
+    transition: all .3s ease;
+    color: rgba(63, 206, 128, 0.7);
 }
 
 .nav-links  a {
@@ -30,7 +37,8 @@
     text-decoration: none;
     margin: 10px;
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Merriweather', serif;
 }
 
 @media screen and (max-width: 450px) {

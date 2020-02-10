@@ -20,7 +20,6 @@ class Event extends Component {
     
     render() { 
         const date = DateTime.fromISO(this.props.date).toFormat('DDD');
-        console.log(date);
         
         return (
             <section className="event-info">

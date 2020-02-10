@@ -17,16 +17,16 @@ Link to Live App: https://plan-it.now.sh/
  </ul>
 
  ### Home Page
- ![Home Page](./src/images/home-page.png)
+ ![Home Page](./src/images/landing-page.jpg)
 
- ### Places List
- ![Places List](./src/images/places-list.png)
+ ### My Events
+ ![My Events](./src/images/my-event.jpg)
 
- ### Place Page
- ![Place Page](./src/images/place-page.png)
+ ### Event Page
+ ![Place Page](./src/images/event-page.jpg)
 
- ### Add Place
- ![Add Place](./src/images/add-place.png)
+ ### New Event
+ ![Add Place](./src/images/new-event.jpg)
 
  ### Registration
- ![Registeration](./src/images/register.png)
+ ![Registration](./src/images/register.jpg)

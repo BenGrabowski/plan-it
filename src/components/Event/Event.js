@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Event.css';
 import EventsContext from '../../EventsContext';
 import moment from 'moment';
+import { DateTime } from 'luxon';
 
 class Event extends Component {
     renderStart() {
@@ -17,14 +18,9 @@ class Event extends Component {
 
     static contextType = EventsContext;
     
-    render() {
-        console.log(this.props.date);
-        console.log(moment(this.props.date, moment.ISO_8601).format('MM-DD-YYYY'));
-
-        const date = moment(this.props.date, moment.ISO_8601).format('MM-DD-YYYY');
-        const datePlusOne = moment(date).add(1, 'd');
-
-        console.log(datePlusOne);
+    render() { 
+        const date = DateTime.fromISO(this.props.date).toFormat('DDD');
+        console.log(date);
         
         return (
             <section className="event-info">
@@ -34,7 +30,8 @@ class Event extends Component {
                 >
                     {this.props.name}
                 </Link>
-                <p className="event-date">{moment(this.props.date, moment.ISO_8601).format('MM-DD-YYYY')}</p>
+                <p className="event-date">{date}</p>
+                {/* <p className="event-date">{moment(this.props.date, moment.ISO_8601).format('MM-DD-YYYY')}</p> */}
                 <p className="event-start">{this.renderStart()}</p>
                 <p className="event-end">{this.renderEnd()}</p>
             </section>

@@ -9,3 +9,9 @@
 .budget-item {
     margin: 5px 0;
 }
+
+.remaining {
+    margin-bottom: 20px;
+    border: 2px solid black;
+    padding: 7px;
+}

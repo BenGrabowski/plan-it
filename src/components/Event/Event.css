@@ -17,8 +17,6 @@
     text-decoration: none;
     font-size: 30px;
     color:rgb(133, 201, 162);
-    /* font-family: 'Roboto', sans-serif; */
-    /* font-family: 'Righteous', cursive; */
     font-family: 'Galada', cursive;
 }
 
@@ -28,6 +26,7 @@
 
 .event-date {
     text-align: center;
+    font-family: 'Merriweather', serif;
 }
 
 .event-info {

@@ -55,6 +55,12 @@ class Nav extends Component {
                 >
                     Register
                 </Link>
+                <Link
+                    to='/demo'
+                    className="nav-link"
+                >
+                    Demo
+                </Link>
             </div>
         )
     }

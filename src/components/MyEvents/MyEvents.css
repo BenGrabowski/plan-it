@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: flex-start; */
 }
 
 .event-container {
@@ -14,8 +13,6 @@
 }
 
 .my-events-header {
-    /* font-family: Georgia, 'Times New Roman', Times, serif; */
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Merriweather', serif;
     font-size: 30px;
 }
@@ -37,6 +34,13 @@
 .add-event-button {
     padding: 3px;
     font-family: 'Merriweather', serif;
+    transition: all .3s ease; 
+}
+
+.new-event-button:hover {
+    transform: background;
+    background: white;
+    color: black;
 }
 
 @media screen and (max-width: 450px) {

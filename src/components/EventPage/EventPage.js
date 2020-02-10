@@ -50,7 +50,12 @@ class EventPage extends Component {
                     displayBudgetForm={this.displayBudgetForm} 
                     hideBudget={this.hideBudget}
                 /> 
-            : <button onClick={this.displayBudgetForm}>Add Budget</button>
+            : <button 
+                onClick={this.displayBudgetForm}
+                className="add-budget-guest"
+            >
+                Add Budget
+            </button>
         );
     }
 
@@ -62,7 +67,12 @@ class EventPage extends Component {
                 setDisplayGuest={this.displayGuestForm}
                 hideGuest={this.hideGuest}
             /> 
-            : <button onClick={this.displayGuestForm}>Add Guests</button>
+            : <button 
+                onClick={this.displayGuestForm}
+                className="add-budget-guest"
+            >
+                Add Guests
+            </button>
         );
     }
 
@@ -162,7 +172,6 @@ class EventPage extends Component {
                                             params={this.props.match.params}
                                             eventId={this.props.match.params.id}
                                         /> 
-                                        // : <Venue /> }
                                         : this.renderVenue()}
                                     
                                     {this.state.displayVenueForm 

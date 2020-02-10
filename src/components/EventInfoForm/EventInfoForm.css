@@ -7,3 +7,13 @@
     margin-top: 7px;
     font-family: 'Merriweather', serif;
 }
+
+.event-info-buttons {
+    margin: 15px 0;
+}
+
+@media screen and (max-width: 450px) {
+    .new-event-inputs input {
+        max-width: 70%;
+    }
+}

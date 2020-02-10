@@ -7,6 +7,7 @@ import Login from '../Login/Login';
 import MyEvents from '../MyEvents/MyEvents';
 import EventPage from '../EventPage/EventPage';
 import NewEvent from '../NewEvent/NewEvent';
+import Demo from '../Demo/Demo';
 import { EventsProvider } from '../../EventsContext';
 import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -46,6 +47,10 @@ class App extends Component {
             <Route
               path='/new-event'
               component={NewEvent}
+            />
+            <Route
+              path='/demo'
+              component={Demo}
             />
           </main>
         </div>  

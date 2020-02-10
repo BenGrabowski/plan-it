@@ -58,7 +58,7 @@ class Budget extends Component {
             <section className="budget">
                 <p className="total-budget">Budget: ${this.context.selectedEvent.budget.total}</p>
                 {this.renderOverBudget()}
-                <p className="budget-item">{this.state.overBudget ? '' : `Remaining Budget: ${remaining}`}</p>
+                <p className="budget-item remaining">{this.state.overBudget ? '' : `Remaining: $${remaining}`}</p>
                 <p className="budget-item">Venue: ${this.context.selectedEvent.budget.venue}</p>
                 <p className="budget-item">Food: ${this.context.selectedEvent.budget.food}</p>
                 <p className="budget-item">Drinks: ${this.context.selectedEvent.budget.drinks}</p>

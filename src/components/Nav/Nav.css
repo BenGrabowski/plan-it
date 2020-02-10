@@ -4,7 +4,6 @@
     align-items: center;
     justify-content: flex-end;
     height: 100px;
-    /* position: fixed; */
     width: 100%;
 }
 
@@ -14,7 +13,6 @@
     color: black;
     text-decoration: none;
     font-size: 36px;
-    /* font-family: Georgia, 'Times New Roman', Times, serif; */
     font-family: 'Galada', cursive;
     font-weight: bold;
 }
@@ -28,6 +26,7 @@
 .nav-link {
     transition: all .3s ease;
     transform: none;
+    display: inline-block;
 }
 
 .nav-link:hover {
@@ -45,8 +44,8 @@
 @media screen and (max-width: 450px) {
     .nav-bar {
         flex-direction: column;
-        margin-top: 75px;
-        border-bottom: 2px solid black;
+        margin-top: 100px;
+        border-bottom: 3px solid black;
     }
 
     .logged-in {
@@ -63,7 +62,6 @@
 
     .app-name {
         margin: 0 auto;
-        /* margin-bottom: 10px; */
     }
 
     .nav-links {

@@ -4,9 +4,6 @@ import EventApiService from '../../services/events-api-service';
 import TokenService from '../../services/token-service';
 import moment from 'moment';
 import './EventInfoForm.css';
-// import DatePicker from 'react-datepicker';
-// import "react-datepicker/dist/react-datepicker.css";
-
 
 class EventInfoForm extends Component {
     static contextType = EventsContext;
@@ -106,11 +103,6 @@ class EventInfoForm extends Component {
                             value={this.state.event_date}
                             className="form-input"
                         />
-                        {/* <DatePicker
-                            name="event-date" 
-                            onChange={event => this.updateEventDate(event)}
-                            value={this.state.event_date}
-                        /> */}
                     </div>
 
                     <div>
@@ -134,8 +126,20 @@ class EventInfoForm extends Component {
                             className="form-input"
                         />
                     </div>
-                    <button onClick={event => this.submitEventInfo(event)}>Done</button>
-                    <button onClick={() => this.props.hideEventInfo()}>Cancel</button>                
+                    <div className="event-info-buttons">
+                        <button 
+                            onClick={event => this.submitEventInfo(event)}
+                            className="done-cancel"
+                        >
+                            Done
+                        </button>
+                        <button 
+                            onClick={() => this.props.hideEventInfo()}
+                            className="done-cancel"
+                        >
+                            Cancel
+                        </button>                                    
+                    </div>
                 </section>
         );
     }

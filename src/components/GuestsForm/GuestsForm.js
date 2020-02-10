@@ -14,8 +14,6 @@ class GuestsForm extends Component {
     };
 
     componentDidMount() {
-        // console.log(this.context.selectedEvent.guests.list)
-        
         if (this.props.params) {
             this.setState({
                 max: this.context.selectedEvent.guests.max,
@@ -47,10 +45,6 @@ class GuestsForm extends Component {
         if(!this.props.newEvent) {
             let newGuestFields = this.context.selectedEvent;
             newGuestFields.guests = updatedGuests;
-
-            // console.log(newGuestFields)
-
-            // return;
 
             EventApiService.patchEvent(
                 user_id,

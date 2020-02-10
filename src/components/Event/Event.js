@@ -19,7 +19,12 @@ class Event extends Component {
     
     render() {
         console.log(this.props.date);
-        console.log(moment(this.props.date, moment.ISO_8601).format('MM-DD-YYYY').add(1, 'd'));
+        console.log(moment(this.props.date, moment.ISO_8601).format('MM-DD-YYYY'));
+
+        const date = moment(this.props.date, moment.ISO_8601).format('MM-DD-YYYY');
+        const datePlusOne = moment(date).add(1, 'd');
+
+        console.log(datePlusOne);
         
         return (
             <section className="event-info">

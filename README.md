@@ -20,7 +20,7 @@ Link to Live App: https://plan-it.now.sh/
  ![Home Page](./src/images/landing-page.jpg)
 
  ### My Events
- ![My Events](./src/images/my-event.jpg)
+ ![My Events](./src/images/my-events.jpg)
 
  ### Event Page
  ![Place Page](./src/images/event-page.jpg)

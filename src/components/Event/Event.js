@@ -18,6 +18,9 @@ class Event extends Component {
     static contextType = EventsContext;
     
     render() {
+        console.log(this.props.date);
+        console.log(moment(this.props.date, moment.ISO_8601).format('MM-DD-YYYY'));
+        
         return (
             <section className="event-info">
                 <Link 

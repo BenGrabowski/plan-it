@@ -17,8 +17,12 @@
 
 .edit-venue-button {
     margin-top: 15px;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
+}
+
+.edit-venue-button:hover {
+    cursor: pointer;
 }
 
 .budget {
@@ -95,8 +99,12 @@
 
 .edit-event-button {
     margin-top: 10px;   
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
+}
+
+.edit-event-button:hover {
+    cursor: pointer;
 }
 
 .event-page .delete-button {

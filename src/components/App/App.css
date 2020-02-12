@@ -41,9 +41,3 @@ html {
 .edit:hover {
     cursor: pointer;
 }
-
-.done-cancel {
-    background: black;
-    color: white;
-    border-radius: 5px;
-}

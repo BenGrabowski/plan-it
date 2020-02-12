@@ -3,6 +3,15 @@
     margin-top: 10px;
     margin-left: 3px;
     margin-right: 3px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: white;
+}
+
+.venue-form button:hover {
+    background: black;
+    color: white;
+    cursor: pointer;
 }
 
 .venue-form {
@@ -19,4 +28,24 @@
 
 .venue-form label {
     margin-right: 5px;
+}
+
+.venue-form input {
+    font-family: 'Merriweather', serif;
+}
+
+@media screen and (max-width: 450px) {
+    .venue-form-buttons {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3px;
+    }
+
+    .venue-form button {
+        margin: 3px 0;
+    }
+
+    .venue-form {
+        line-height: initial;
+    }
 }

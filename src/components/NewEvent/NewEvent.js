@@ -28,6 +28,10 @@ class NewEvent extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         this.context.clearSelectedEvent();
+
+        if (!this.context.loggedIn) {
+            this.props.history.push('/login');
+        }
     }
 
     handleAddEvent = event => {

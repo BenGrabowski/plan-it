@@ -3,6 +3,14 @@
     margin-top: 10px;
     margin-left: 3px;
     margin-right: 3px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.budget-form button:hover {
+    cursor: pointer;
+    background: black;
+    color: white;
 }
 
 .budget-form {
@@ -12,6 +20,25 @@
     font-family: 'Merriweather', serif;
 }
 
+.budget-form input {
+    font-family: 'Merriweather', serif;
+}
+
 .budget-form h3 {
     margin: 0;
+}
+
+@media screen and (max-width: 450px) {
+    .budget-form-buttons {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3px;
+    }
+
+    .budget-form button {
+        margin: 3px 0;
+        border: 1px solid black;
+        background: white;
+        border-radius: 5px;
+    }
 }

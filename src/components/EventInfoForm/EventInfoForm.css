@@ -12,8 +12,31 @@
     margin: 15px 0;
 }
 
+.event-info-buttons button:hover {
+    background: black;
+    color: white;
+}
+
+.event-info-buttons button {
+    margin: 0 3px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 450px) {
     .new-event-inputs input {
         max-width: 70%;
+    }
+
+    .event-info-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .event-info-buttons button {
+        margin: 3px;
+        border: 1px solid black;
+        background: white;
+        border-radius: 5px;
     }
 }

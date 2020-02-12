@@ -18,6 +18,13 @@ class MyEvents extends Component {
     componentDidMount() {
         this.context.clearError();
         const user_id = TokenService.getUserId();
+
+        console.log(user_id);
+
+        if (!user_id) {
+            this.props.history.push('/login');
+        }
+
         EventsApiService.getEvents(user_id)
             .then(res => {
                 this.context.setEvents(res);

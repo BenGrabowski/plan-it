@@ -129,13 +129,11 @@ class EventInfoForm extends Component {
                     <div className="event-info-buttons">
                         <button 
                             onClick={event => this.submitEventInfo(event)}
-                            className="done-cancel"
                         >
                             Done
                         </button>
                         <button 
                             onClick={() => this.props.hideEventInfo()}
-                            className="done-cancel"
                         >
                             Cancel
                         </button>                                    

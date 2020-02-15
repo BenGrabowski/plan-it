@@ -25,6 +25,12 @@ class Event extends Component {
         console.log(this.props.date);
         console.log(date);
 
+        console.log((new Date()).toString())
+        console.log((new Date()).toLocaleString())
+        console.log((new Date()).getTimezoneOffset())
+        console.log(navigator.userAgent)
+        console.log(moment.version)
+
         // const dateTimezone = moment.tz(this.props.date, "America/Denver").format('MMMM DD YYYY')
 
         // console.log(dateTimezone);

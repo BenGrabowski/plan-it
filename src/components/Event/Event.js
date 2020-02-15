@@ -22,6 +22,9 @@ class Event extends Component {
     render() { 
         const date = DateTime.fromISO(this.props.date).toFormat('DDD');
 
+        console.log(this.props.date);
+        console.log(date);
+
         // const dateTimezone = moment.tz(this.props.date, "America/Denver").format('MMMM DD YYYY')
 
         // console.log(dateTimezone);

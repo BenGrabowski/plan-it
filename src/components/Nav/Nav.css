@@ -44,7 +44,11 @@
 @media screen and (max-width: 450px) {
     .nav-bar {
         flex-direction: column;
-        margin-top: 100px;
+        /* margin-top: 100px; */
+        /* margin-top: 25px; */
+        /* margin-top: 50px; */
+        /* height: 220px; */
+        height: 100%;
         border-bottom: 3px solid black;
     }
 
@@ -62,6 +66,7 @@
 
     .app-name {
         margin: 0 auto;
+        margin-top: 20px;
     }
 
     .nav-links {

@@ -20,20 +20,13 @@ class Event extends Component {
     static contextType = EventsContext;
     
     render() { 
-        const date = DateTime.fromISO(this.props.date).toFormat('DDD');
+        const utcDate = moment.utc(this.props.date, moment.ISO_8601)._i;
+        // console.log(utcDate)
 
-        console.log(this.props.date);
+        // const date = DateTime.fromISO(this.props.date).toFormat('DDD');
+        const date = DateTime.fromISO(utcDate).toFormat('DDD');
         console.log(date);
 
-        console.log((new Date()).toString())
-        console.log((new Date()).toLocaleString())
-        console.log((new Date()).getTimezoneOffset())
-        console.log(navigator.userAgent)
-        console.log(moment.version)
-
-        // const dateTimezone = moment.tz(this.props.date, "America/Denver").format('MMMM DD YYYY')
-
-        // console.log(dateTimezone);
         
         return (
             <section className="event-info">
@@ -44,8 +37,6 @@ class Event extends Component {
                     {this.props.name}
                 </Link>
                 <p className="event-date">{date}</p>
-                {/* <p className="event-date">{moment(this.props.date, moment.ISO_8601).format('MM-DD-YYYY')}</p> */}
-                {/* <p className="event-date">{dateTimezone}</p> */}
                 <p className="event-start">{this.renderStart()}</p>
                 <p className="event-end">{this.renderEnd()}</p>
             </section>

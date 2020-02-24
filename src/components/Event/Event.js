@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import './Event.css';
 import EventsContext from '../../EventsContext';
 import moment, { ISO_8601 } from 'moment';
-// import moment from 'moment-timezone';
-import { DateTime } from 'luxon';
 
 class Event extends Component {
     renderStart() {
@@ -21,12 +19,6 @@ class Event extends Component {
     
     render() { 
         const date = moment.utc(this.props.date, ISO_8601).format('MMMM D, YYYY');
-
-        // const date = DateTime.fromISO(this.props.date).toFormat('DDD');
-        // const date = DateTime.fromISO(utcDate).toFormat('DDD');
-        // const date = moment.utc(this.props.date).format()
-        console.log(date);
-
         
         return (
             <section className="event-info">

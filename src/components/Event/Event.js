@@ -20,9 +20,9 @@ class Event extends Component {
     static contextType = EventsContext;
     
     render() { 
-        const datePluseOne = moment.utc(this.props.date, ISO_8601).add(1, 'day').format('MMMM D, YYYY');
+        const date = moment.utc(this.props.date, ISO_8601).format('MMMM D, YYYY');
 
-        const date = DateTime.fromISO(this.props.date).toFormat('DDD');
+        // const date = DateTime.fromISO(this.props.date).toFormat('DDD');
         // const date = DateTime.fromISO(utcDate).toFormat('DDD');
         // const date = moment.utc(this.props.date).format()
         console.log(date);
@@ -36,8 +36,7 @@ class Event extends Component {
                 >
                     {this.props.name}
                 </Link>
-                {/* <p className="event-date">{date}</p> */}
-                <p className="event-date">{datePluseOne}</p>
+                <p className="event-date">{date}</p>
                 <p className="event-start">{this.renderStart()}</p>
                 <p className="event-end">{this.renderEnd()}</p>
             </section>

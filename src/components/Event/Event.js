@@ -20,11 +20,15 @@ class Event extends Component {
     static contextType = EventsContext;
     
     render() { 
-        const utcDate = moment.utc(this.props.date, moment.ISO_8601)._i;
+        // const utcDate = moment.utc(this.props.date, moment.ISO_8601)._i;
         // console.log(utcDate)
 
-        // const date = DateTime.fromISO(this.props.date).toFormat('DDD');
-        const date = DateTime.fromISO(utcDate).toFormat('DDD');
+        const datePlusOne = moment(this.props.date).add(1, 'day');
+        console.log(datePlusOne);
+
+        const date = DateTime.fromISO(this.props.date).toFormat('DDD');
+        // const date = DateTime.fromISO(utcDate).toFormat('DDD');
+        // const date = moment.utc(this.props.date).format()
         console.log(date);
 
         

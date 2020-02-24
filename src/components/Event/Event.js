@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Event.css';
 import EventsContext from '../../EventsContext';
-import moment from 'moment';
+import moment, { ISO_8601 } from 'moment';
 // import moment from 'moment-timezone';
 import { DateTime } from 'luxon';
 
@@ -20,11 +20,7 @@ class Event extends Component {
     static contextType = EventsContext;
     
     render() { 
-        // const utcDate = moment.utc(this.props.date, moment.ISO_8601)._i;
-        // console.log(utcDate)
-
-        const datePlusOne = moment(this.props.date).add(1, 'day');
-        console.log(datePlusOne);
+        const datePluseOne = moment.utc(this.props.date, ISO_8601).add(1, 'day').format('MMMM D, YYYY');
 
         const date = DateTime.fromISO(this.props.date).toFormat('DDD');
         // const date = DateTime.fromISO(utcDate).toFormat('DDD');
@@ -40,7 +36,8 @@ class Event extends Component {
                 >
                     {this.props.name}
                 </Link>
-                <p className="event-date">{date}</p>
+                {/* <p className="event-date">{date}</p> */}
+                <p className="event-date">{datePluseOne}</p>
                 <p className="event-start">{this.renderStart()}</p>
                 <p className="event-end">{this.renderEnd()}</p>
             </section>
